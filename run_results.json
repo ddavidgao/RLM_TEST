@@ -1,0 +1,52 @@
+[
+  {
+    "run_id": 1,
+    "timestamp": "2026-01-27T23:15:15.790974",
+    "total_llm_calls": 9,
+    "root_iterations": 9,
+    "sub_llm_calls": 0,
+    "time_seconds": 66.05,
+    "score": 0.5,
+    "answer_preview": "\"The sentence contains three formatting errors: 1) 'San Fransisco' should be 'San Francisco' (geographic name spelling), 2) 'Navy's' should be 'navy's' (capitalization rule - 'navy' is used as an adje"
+  },
+  {
+    "run_id": 2,
+    "timestamp": "2026-01-27T23:23:43.185401",
+    "total_llm_calls": 8,
+    "root_iterations": 8,
+    "sub_llm_calls": 0,
+    "time_seconds": 76.67,
+    "score": 0.5,
+    "answer_preview": "\"Based on the manual's formatting rules, there are three specific errors in the sentence 'The 8x10 inch photograph shows the Navy's steamship Oregon docked at San Fransisco harbor.' First, the measure"
+  },
+  {
+    "run_id": 3,
+    "timestamp": "2026-01-27T23:34:12.465342",
+    "total_llm_calls": 10,
+    "root_iterations": 10,
+    "sub_llm_calls": 0,
+    "time_seconds": 191.75,
+    "score": 0.25,
+    "answer_preview": "The sentence contains two formatting errors: 1) \"San Fransisco\" should be spelled \"San Francisco\" (incorrect spelling), and 2) \"harbor\" should be capitalized as \"Harbor\" (incorrect capitalization). Ac"
+  },
+  {
+    "run_id": 4,
+    "timestamp": "2026-01-27T23:38:22.798415",
+    "total_llm_calls": 9,
+    "root_iterations": 9,
+    "sub_llm_calls": 0,
+    "time_seconds": 114.12,
+    "score": 0.25,
+    "answer_preview": "\"Based on my analysis of the formatting guidelines in the document, the sentence 'The 8x10 inch photograph shows the Navy's steamship Oregon docked at San Fransisco harbor.' contains the following for"
+  },
+  {
+    "run_id": 5,
+    "timestamp": "2026-01-27T23:59:20.678858",
+    "total_llm_calls": 12,
+    "root_iterations": 12,
+    "sub_llm_calls": 0,
+    "time_seconds": 119.97,
+    "score": 0.25,
+    "answer_preview": "\"For a photograph that is 8 inches by 10 inches, the correct format according to the document rules is: '8 by 10 inches'. The document specifically states '5 by (not x) 10 inches' as the convention, i"
+  }
+]

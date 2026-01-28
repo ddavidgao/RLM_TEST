@@ -31,7 +31,8 @@ def chat_llm(messages, model="qwen3-coder:30b"):
     data = response.json()
 
     # Navigate the nested dict to extract just the text we want
-    return data["message"]["content"]
+    # return data["message"]["content"]
+    return data
 
 
 def ask_llm(prompt):
@@ -52,4 +53,5 @@ def ask_llm(prompt):
     data = response.json()
 
     # Different response structure - just "response", not "message.content"
-    return data["response"]
+    # return data["response"]
+    return data
