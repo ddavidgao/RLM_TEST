@@ -4,12 +4,17 @@ from datetime import datetime
 from src.rlm import RLM
 from src.llm import chat_llm
 
+GRADER_MODEL = "qwen3-coder:30b"
+
 # --- BASELINE ANSWER (what the RLM should find) ---
 EXPECTED_ERRORS = [
-    "Use 'by' not 'x' for dimensions: '8 by 10' not '8x10'",
-    "Names of vessels should be in italic: _Oregon_",
-    "Naval vessels use 'U. S. S.' prefix: U. S. S. _Oregon_",
-    "Misspelling: 'San Francisco' not 'San Fransisco'",
+    "Vessel names are NOT italicized in tabular matter (exception to italic rule)",
+    "Use 'U. S. S.' with periods and spaces, not 'U.S.S.'",
+    "Hyphenate compound adjective: '150-foot' not '150 foot'",
+    "Hyphenate 'navy-yard' per compounding rules",
+    "Use 'Pa.' after navy-yards: 'League Island Navy-Yard, Pa.'",
+    "Abbreviate 'Lieut. Commander' when Christian name/initial is used",
+    "Keep 'United States Navy' spelled out when written that way (not U. S. N.)",
 ]
 
 RESULTS_FILE = "run_results.json"
@@ -19,17 +24,33 @@ def score_answer(answer, expected_errors):
     """Use the LLM to check how many expected errors were found in the answer."""
     checklist = "\n".join(f"{i+1}. {e}" for i, e in enumerate(expected_errors))
 
-    prompt = f"""You are a grader. Compare the ANSWER against the CHECKLIST of errors that should have been identified.
+    prompt = f"""You are a strict grader. Compare the ANSWER against each CHECKLIST item.
 
-For each checklist item, respond with FOUND or MISSED. Then give a total score as SCORE: X/{len(expected_errors)}
+For EACH checklist item:
+1. Quote the specific text from ANSWER that addresses this item (or write "NO MATCH FOUND")
+2. Then write FOUND or MISSED
+
+Rules:
+- If the answer says "unable to determine", "not found", or similar - that's MISSED
+- If the answer doesn't specifically mention the rule/concept - that's MISSED
+- Only mark FOUND if you can quote concrete evidence
 
 CHECKLIST:
 {checklist}
 
 ANSWER:
-{answer}"""
+{answer}
 
-    result = chat_llm([{"role": "user", "content": prompt}], "qwen3-coder:30b")
+Format:
+1. [item summary]
+   Evidence: "[quoted text]" OR "NO MATCH FOUND"
+   Verdict: FOUND/MISSED
+
+(repeat for each item)
+
+SCORE: X/{len(expected_errors)}"""
+
+    result = chat_llm([{"role": "user", "content": prompt}], GRADER_MODEL)
     grading = result["message"]["content"]
     print(f"\n[GRADING]\n{grading}\n")
 
@@ -118,9 +139,11 @@ with open("gpo_manual.txt", "r", encoding="utf-8") as f:
 
 print(f"Context size: {len(context)} characters")
 
-question = """I need to write a government document with this sentence:
-"The 8x10 inch photograph shows the Navy's steamship Oregon docked at San Fransisco harbor."
-According to this manual, what formatting errors does this sentence contain and how should it be corrected?"""
+question = """I need to format this table entry for a government report:
+
+"The U.S.S. Katahdin, a 150 foot gunboat with a 500 horsepower engine, stationed at the League Island Navy Yard in Pennsylvania, commanded by Lieutenant Commander R. W. Meade of the United States Navy."
+
+According to this manual, what are ALL the formatting rules that apply to this entry, considering it will appear in a TABLE? List each rule and the correction needed."""
 
 answer = rlm.completion(question, context)
 print(f"\nFINAL ANSWER: {answer}")

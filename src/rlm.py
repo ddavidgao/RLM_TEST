@@ -1,53 +1,53 @@
 from src.llm import chat_llm
 
 # Instructions that tell the LLM how to use the REPL environment
-SYSTEM_PROMPT = """You have access to a Python REPL environment.
+SYSTEM_PROMPT = """You are a SEARCH assistant with a Python REPL. You search documents - nothing else.
 
-IMPORTANT: Pretend you have NEVER seen this text before. You know NOTHING about it.
+OUTPUT FORMAT: Your response must START with ```python - no preamble, no explanation, just code.
 
-AVAILABLE VARIABLES:
-- `context`: A string containing text you must explore
-- `llm_query(question, subset)`: Sends a question + text subset to a sub-LLM for analysis.
-  Returns a short answer string, or a [FAILED] message if the subset wasn't enough.
-  Use this when you've found a relevant chunk and want it analyzed without losing your conversation context.
-  Example: result = llm_query("what does this say about spacing?", context[5000:7000])
+CONSTRAINT: Your training data is IRRELEVANT. You know NOTHING about this document.
+- Answering without searching = WRONG
+- Explaining instead of searching = WRONG
+- Any text before your code block = WRONG
 
-RULES:
-1. You have ZERO prior knowledge. Explore like it's your first time reading.
-2. NEVER redefine the `context` variable. It already contains the text.
-3. Use context.find(), context[start:end], etc. to explore.
-4. Before answering, you MUST show the exact text you found from OUTPUT.
-5. ONE code block per message, then STOP and wait.
-6. When calling llm_query(), pass a SUBSET like context[start:end], NEVER the entire context.
+TOOLS:
+- `context` - the document (already loaded, DO NOT redefine)
+- `llm_query(question, context[start:end])` - ask sub-LLM about a chunk
 
 WORKFLOW:
-1. Write code with print() to see results
-2. STOP and wait - the output will appear in the next message
-3. Read the ACTUAL output, then write more code or give FINAL
+1. Write ```python with print() to search
+2. STOP immediately after code block
+3. Wait for output (appears in next message)
+4. Search more OR give FINAL(answer)
 
-CRITICAL:
-- Always use print() or you won't see anything
-- The output appears AFTER you stop - don't make up results
-- Wait for real output before saying "I found"
-- Search for MANY different keywords related to the question before concluding
-- Don't read the entire document chunk by chunk
+SEARCH STRATEGY:
+- If find() returns -1, try DIFFERENT keywords (not the same one)
+- Try 5-10 keywords before concluding something isn't covered
+- Use words FROM the question: vessel, ship, foot, horsepower, italic, abbreviate
+- Try simpler terms, synonyms, related concepts
 
-EXAMPLE:
+DO NOT:
+- Explain what you're doing
+- Teach Python concepts
+- Answer from memory
+- Write multiple code blocks
+- Add text before ```python
+
+EXAMPLE (your entire response should look like this):
 ```python
-idx = context.find("keyword")
-print(idx)
-print(context[idx:idx+300])
+idx = context.find("vessel")
+print(f"Found at: {idx}")
+if idx != -1:
+    print(context[idx:idx+500])
 ```
-(STOP HERE - output will appear next)
 
-Once you have found relevant text and formed an interpretation, you MUST end with:
-FINAL(your interpretation here)"""
-
+When done searching, end with: FINAL(your evidence-based answer)"""
 
 class RLM:
-    def __init__(self, model="qwen3-coder:30b"):
+    def __init__(self, root_model = "deepseek-r1:14b", sub_model="qwen3-coder:30b"):
         self.time_spent = 0
-        self.model = model
+        self.root_model = root_model
+        self.sub_model = sub_model
         self.sub_llm_calls = 0
         self.iterations = 0
         self.namespace = {}  # holds variables the LLM's code can access
@@ -68,7 +68,7 @@ class RLM:
             
     def llm_query(self, question, subset):
         self.sub_llm_calls += 1
-        result = chat_llm([{"role": "user", "content": f"Using ONLY the following context, answer the question. If the context doesn't contain enough information, respond with [FAILED] and briefly explain why.\n\nContext: {subset}\n\nQuestion: {question}"}], self.model)
+        result = chat_llm([{"role": "user", "content": f"Using ONLY the following context, answer the question. If the context doesn't contain enough information, respond with [FAILED] and briefly explain why.\n\nContext: {subset}\n\nQuestion: {question}"}], self.sub_model)
         self.time_spent += result["prompt_eval_duration"] + result["eval_duration"]
         return result["message"]["content"]
 
@@ -84,15 +84,14 @@ class RLM:
         self.namespace["context"] = context  # make context available to exec'd code
         self.namespace["llm_query"] = self.llm_query
         messages = [
-            {"role": "system", "content": SYSTEM_PROMPT},
-            {"role": "user", "content": question}
+            {"role": "user", "content": SYSTEM_PROMPT + "\n\n---\n\n" + question}
         ]
 
         # REPL loop: LLM writes code → we run it → feed output back
         max_iterations = 30
         for i in range(max_iterations):
             self.iterations += 1
-            init = chat_llm(messages, self.model)
+            init = chat_llm(messages, self.root_model)
 
             response = init["message"]["content"]
 
@@ -111,10 +110,14 @@ class RLM:
                 # Catch cheating - LLM trying to redefine context in any block
                 if any("context =" in block or "context=" in block for block in code):
                     output = "ERROR: You cannot redefine 'context'. Use context.find() to search the existing text."
+                # Catch fake code - must actually reference context to be a real search
+                elif not any("context" in block for block in code):
+                    output = "ERROR: Your code must search the `context` variable. Use context.find('keyword') to explore the document. You cannot answer from memory."
                 else:
                     output = self.run_code(code)
             else:
-                output = "(No code found in response)"
+                # No code = not following the workflow, push back
+                output = "ERROR: You MUST write a ```python code block to search the document. You cannot answer from memory. Start with:\n```python\nidx = context.find('vessel')\nprint(idx, context[idx:idx+500] if idx != -1 else 'not found')\n```"
 
             # Add this exchange to history so LLM sees what happened
             messages.append({"role": "assistant", "content": response})

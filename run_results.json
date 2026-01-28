@@ -48,5 +48,45 @@
     "time_seconds": 119.97,
     "score": 0.25,
     "answer_preview": "\"For a photograph that is 8 inches by 10 inches, the correct format according to the document rules is: '8 by 10 inches'. The document specifically states '5 by (not x) 10 inches' as the convention, i"
+  },
+  {
+    "run_id": 6,
+    "timestamp": "2026-01-28T10:43:56.215563",
+    "total_llm_calls": 1,
+    "root_iterations": 1,
+    "sub_llm_calls": 0,
+    "time_seconds": 14.12,
+    "score": 1.0,
+    "answer_preview": ":The corrected sentence is: \"The 8 by 10-inch photograph shows the Navy's steamship USS Oregon docked at San Francisco harbor.\""
+  },
+  {
+    "run_id": 7,
+    "timestamp": "2026-01-28T11:18:56.257988",
+    "total_llm_calls": 3,
+    "root_iterations": 3,
+    "sub_llm_calls": 0,
+    "time_seconds": 24.76,
+    "score": 1.0,
+    "answer_preview": "Unable to determine specific formatting rules for tables in the government report based on the provided context."
+  },
+  {
+    "run_id": 8,
+    "timestamp": "2026-01-28T12:30:37.134389",
+    "total_llm_calls": 32,
+    "root_iterations": 30,
+    "sub_llm_calls": 2,
+    "time_seconds": 779.28,
+    "score": 0.0,
+    "answer_preview": "ERROR: Max iterations reached without conclusion"
+  },
+  {
+    "run_id": 9,
+    "timestamp": "2026-01-28T12:56:27.295890",
+    "total_llm_calls": 30,
+    "root_iterations": 30,
+    "sub_llm_calls": 0,
+    "time_seconds": 707.51,
+    "score": 0.0,
+    "answer_preview": "ERROR: Max iterations reached without conclusion"
   }
 ]
