@@ -1,0 +1,21 @@
+# Learning notes & memory (packaged separately)
+.claude/memory/
+
+# Claude local settings
+.claude/settings.local.json
+
+# Large binaries / installers
+*.exe
+
+# Python
+__pycache__/
+*.pyc
+
+# Packaged learning notes (for transfer, not for repo)
+rlm_learning_notes.zip
+
+# Reference texts (not project code)
+hamlet.txt
+
+# Misc artifacts
+nul
