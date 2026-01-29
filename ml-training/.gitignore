@@ -1,0 +1,15 @@
+# Model outputs (too large for git)
+outputs/*.bin
+outputs/*.safetensors
+outputs/*.gguf
+outputs/*/
+
+# Keep the folder structure
+!outputs/.gitkeep
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# Python
+__pycache__/
+*.pyc
