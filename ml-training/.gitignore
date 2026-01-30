@@ -13,3 +13,15 @@ outputs/*/
 # Python
 __pycache__/
 *.pyc
+
+# HuggingFace cache (model downloads)
+.cache/
+
+# Jupyter trash
+.Trash-*/
+
+# Local Jupyter runtime
+.local/
+
+# Unsloth compiled cache
+unsloth_compiled_cache/
