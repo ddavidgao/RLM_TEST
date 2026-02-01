@@ -1,5 +1,6 @@
 # Learning notes & memory (packaged separately)
 .claude/memory/
+CLAUDE.md
 
 # Claude local settings
 .claude/settings.local.json
