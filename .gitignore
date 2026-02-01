@@ -19,3 +19,10 @@ hamlet.txt
 
 # Misc artifacts
 nul
+
+# ML training artifacts (large/temporary)
+ml-training/wandb/
+ml-training/rlm_lora_output/
+ml-training/.cache/
+ml-training/outputs/
+*.safetensors

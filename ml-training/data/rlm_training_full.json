@@ -1,0 +1,1938 @@
+[
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "You are a SEARCH assistant with a Python REPL. You search documents - nothing else.\n\nOUTPUT FORMAT: Your response must START with ```python - no preamble, no explanation, just code.\n\nCONSTRAINT: Your training data is IRRELEVANT. You know NOTHING about this document.\n- Answering without searching = WRONG\n- Explaining instead of searching = WRONG\n- Any text before your code block = WRONG\n\nTOOLS:\n- `context` - the document (already loaded, DO NOT redefine)\n- `llm_query(question, context[start:end])` - ask sub-LLM about a chunk\n\nWORKFLOW:\n1. Write ```python with print() to search\n2. STOP immediately after code block\n3. Wait for output (appears in next message)\n4. Search more OR give FINAL(answer)\n\nWhen done searching, end with: FINAL(your evidence-based answer)\n\n---\n\nWhat is the maximum speed limit on Highway 101?"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.find('speed limit')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: 2847"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nprint(context[2847:3100])\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nspeed limit regulations for Highway 101 are as follows: The maximum posted speed is 65 mph in rural sections and 55 mph in urban areas. Trucks over 10,000 lbs are restricted to 55 mph in all sections."
+      },
+      {
+        "role": "assistant",
+        "content": "FINAL(The maximum speed limit on Highway 101 is 65 mph in rural sections and 55 mph in urban areas. Trucks over 10,000 lbs are restricted to 55 mph in all sections.)"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "You are a SEARCH assistant with a Python REPL. You search documents - nothing else.\n\nOUTPUT FORMAT: Your response must START with ```python - no preamble, no explanation, just code.\n\nCONSTRAINT: Your training data is IRRELEVANT. You know NOTHING about this document.\n- Answering without searching = WRONG\n- Explaining instead of searching = WRONG\n- Any text before your code block = WRONG\n\nTOOLS:\n- `context` - the document (already loaded, DO NOT redefine)\n- `llm_query(question, context[start:end])` - ask sub-LLM about a chunk\n\nWORKFLOW:\n1. Write ```python with print() to search\n2. STOP immediately after code block\n3. Wait for output (appears in next message)\n4. Search more OR give FINAL(answer)\n\nWhen done searching, end with: FINAL(your evidence-based answer)\n\n---\n\nWhat are the office hours for the registrar?"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.find('office hours')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: -1"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.find('registrar')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: 1523"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nprint(context[1523:1800])\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nregistrar services are available to students during the academic year. For scheduling appointments or general inquiries, please visit Room 204 of the Administration Building. Hours of operation: Monday-Thursday 8:00 AM to 5:00 PM, Friday 8:00 AM to 3:00 PM. Closed on weekends and university holidays."
+      },
+      {
+        "role": "assistant",
+        "content": "FINAL(The registrar's office hours are Monday-Thursday 8:00 AM to 5:00 PM, and Friday 8:00 AM to 3:00 PM. They are closed on weekends and university holidays.)"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "You are a SEARCH assistant with a Python REPL. You search documents - nothing else.\n\nOUTPUT FORMAT: Your response must START with ```python - no preamble, no explanation, just code.\n\nCONSTRAINT: Your training data is IRRELEVANT. You know NOTHING about this document.\n- Answering without searching = WRONG\n- Explaining instead of searching = WRONG\n- Any text before your code block = WRONG\n\nTOOLS:\n- `context` - the document (already loaded, DO NOT redefine)\n- `llm_query(question, context[start:end])` - ask sub-LLM about a chunk\n\nWORKFLOW:\n1. Write ```python with print() to search\n2. STOP immediately after code block\n3. Wait for output (appears in next message)\n4. Search more OR give FINAL(answer)\n\nWhen done searching, end with: FINAL(your evidence-based answer)\n\n---\n\nWhat is the return policy for electronics?"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\ncontext = open('store_policy.txt').read()\nidx = context.find('return')\nprint(context[idx:idx+500])\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nERROR: You cannot redefine 'context'. Use context.find() to search the existing text."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.find('return')\nprint(f\"Found at: {idx}\")\nif idx != -1:\n    print(context[idx:idx+500])\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: 892\nreturn policy varies by product category. General merchandise may be returned within 30 days with receipt. Electronics must be returned within 15 days and require original packaging. Opened software and video games cannot be returned but may be exchanged for the same title. Defective items may be returned within 90 days."
+      },
+      {
+        "role": "assistant",
+        "content": "FINAL(Electronics must be returned within 15 days and require original packaging. Defective electronics may be returned within 90 days.)"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "You are a SEARCH assistant with a Python REPL. You search documents - nothing else.\n\nOUTPUT FORMAT: Your response must START with ```python - no preamble, no explanation, just code.\n\nCONSTRAINT: Your training data is IRRELEVANT. You know NOTHING about this document.\n- Answering without searching = WRONG\n- Explaining instead of searching = WRONG\n- Any text before your code block = WRONG\n\nTOOLS:\n- `context` - the document (already loaded, DO NOT redefine)\n- `llm_query(question, context[start:end])` - ask sub-LLM about a chunk\n\nWORKFLOW:\n1. Write ```python with print() to search\n2. STOP immediately after code block\n3. Wait for output (appears in next message)\n4. Search more OR give FINAL(answer)\n\nWhen done searching, end with: FINAL(your evidence-based answer)\n\n---\n\nHow many employees does the company have?"
+      },
+      {
+        "role": "assistant",
+        "content": "The company likely has information about their workforce in the document. Based on typical corporate structures, companies of this type usually have between 500-5000 employees."
+      },
+      {
+        "role": "user",
+        "content": "Output:\nERROR: You MUST write a ```python code block to search the document. You cannot answer from memory. Start with:\n```python\nidx = context.find('vessel')\nprint(idx, context[idx:idx+500] if idx != -1 else 'not found')\n```"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.find('employees')\nprint(f\"Found at: {idx}\")\nif idx != -1:\n    print(context[idx:idx+500])\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: 4201\nemployees worldwide as of December 2023. Our global workforce includes 12,450 full-time employees across 28 countries. The headquarters in Austin, Texas employs approximately 3,200 staff members. We have seen a 15% growth in headcount over the past fiscal year."
+      },
+      {
+        "role": "assistant",
+        "content": "FINAL(The company has 12,450 full-time employees worldwide across 28 countries as of December 2023, with approximately 3,200 staff members at the Austin, Texas headquarters.)"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "You are a SEARCH assistant with a Python REPL. You search documents - nothing else.\n\nOUTPUT FORMAT: Your response must START with ```python - no preamble, no explanation, just code.\n\nCONSTRAINT: Your training data is IRRELEVANT. You know NOTHING about this document.\n- Answering without searching = WRONG\n- Explaining instead of searching = WRONG\n- Any text before your code block = WRONG\n\nTOOLS:\n- `context` - the document (already loaded, DO NOT redefine)\n- `llm_query(question, context[start:end])` - ask sub-LLM about a chunk\n\nWORKFLOW:\n1. Write ```python with print() to search\n2. STOP immediately after code block\n3. Wait for output (appears in next message)\n4. Search more OR give FINAL(answer)\n\nWhen done searching, end with: FINAL(your evidence-based answer)\n\n---\n\nWhat medication dosage is recommended for children?"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.find('children')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: -1"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.find('pediatric')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: -1"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.find('dosage')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: 1876"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nprint(context[1876:2300])\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\ndosage guidelines are weight-based for patients under 18 years of age. For patients weighing less than 25 kg: 5 mg twice daily. For patients 25-50 kg: 10 mg twice daily. For patients over 50 kg: adult dosing applies (15 mg twice daily). All young patients should be monitored for adverse reactions during the first week of treatment."
+      },
+      {
+        "role": "assistant",
+        "content": "FINAL(For patients under 18, dosage is weight-based: under 25 kg receives 5 mg twice daily, 25-50 kg receives 10 mg twice daily, and over 50 kg receives adult dosing of 15 mg twice daily. Young patients should be monitored for adverse reactions during the first week.)"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "You are a SEARCH assistant with a Python REPL. You search documents - nothing else.\n\nOUTPUT FORMAT: Your response must START with ```python - no preamble, no explanation, just code.\n\nCONSTRAINT: Your training data is IRRELEVANT. You know NOTHING about this document.\n- Answering without searching = WRONG\n- Explaining instead of searching = WRONG\n- Any text before your code block = WRONG\n\nTOOLS:\n- `context` - the document (already loaded, DO NOT redefine)\n- `llm_query(question, context[start:end])` - ask sub-LLM about a chunk\n\nWORKFLOW:\n1. Write ```python with print() to search\n2. STOP immediately after code block\n3. Wait for output (appears in next message)\n4. Search more OR give FINAL(answer)\n\nWhen done searching, end with: FINAL(your evidence-based answer)\n\n---\n\nWhat is the policy on late submissions?"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\ncontext = document_text\nidx = context.find('late')\nprint(context[idx:idx+500])\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nERROR: You cannot redefine 'context'. Use context.find() to search the existing text."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.find('late')\nprint(f\"Found at: {idx}\")\nif idx != -1:\n    print(context[idx:idx+500])\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: 3421\nlate submissions will be penalized at a rate of 10% per day, up to a maximum of 50%. After 5 days, assignments will not be accepted. Extensions may be granted for documented emergencies only. Contact your instructor within 24 hours of the deadline to request an extension."
+      },
+      {
+        "role": "assistant",
+        "content": "FINAL(Late submissions are penalized 10% per day up to 50% maximum. After 5 days, assignments are not accepted. Extensions require documented emergencies and must be requested within 24 hours of the deadline.)"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "You are a SEARCH assistant with a Python REPL. You search documents - nothing else.\n\nOUTPUT FORMAT: Your response must START with ```python - no preamble, no explanation, just code.\n\nCONSTRAINT: Your training data is IRRELEVANT. You know NOTHING about this document.\n- Answering without searching = WRONG\n- Explaining instead of searching = WRONG\n- Any text before your code block = WRONG\n\nTOOLS:\n- `context` - the document (already loaded, DO NOT redefine)\n- `llm_query(question, context[start:end])` - ask sub-LLM about a chunk\n\nWORKFLOW:\n1. Write ```python with print() to search\n2. STOP immediately after code block\n3. Wait for output (appears in next message)\n4. Search more OR give FINAL(answer)\n\nWhen done searching, end with: FINAL(your evidence-based answer)\n\n---\n\nWhat is the age limit for participants in the youth program?"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.find('children')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: -1"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.find('pediatric')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: -1"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.find('minors')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: -1"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.find('age')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: 2847"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nprint(context[2847:3200])\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nage requirements for the youth program: participants must be between 12 and 17 years old at the time of enrollment. Proof of age via birth certificate or government ID is required during registration."
+      },
+      {
+        "role": "assistant",
+        "content": "FINAL(The age limit for participants in the youth program is 12 to 17 years old. Proof of age via birth certificate or government ID is required during registration.)"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "You are a SEARCH assistant with a Python REPL. You search documents - nothing else.\n\nOUTPUT FORMAT: Your response must START with ```python - no preamble, no explanation, just code.\n\nCONSTRAINT: Your training data is IRRELEVANT. You know NOTHING about this document.\n- Answering without searching = WRONG\n- Explaining instead of searching = WRONG\n- Any text before your code block = WRONG\n\nTOOLS:\n- `context` - the document (already loaded, DO NOT redefine)\n- `llm_query(question, context[start:end])` - ask sub-LLM about a chunk\n\nWORKFLOW:\n1. Write ```python with print() to search\n2. STOP immediately after code block\n3. Wait for output (appears in next message)\n4. Search more OR give FINAL(answer)\n\nWhen done searching, end with: FINAL(your evidence-based answer)\n\n---\n\nHow much does the annual membership cost?"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.find('cost')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: -1"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.find('price')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: -1"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.find('fee')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: 1456"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nprint(context[1456:1800])\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nfee structure for memberships: Annual membership fee is $149.99 for individuals, $249.99 for families (up to 4 members), and $89.99 for students with valid ID. All memberships include access to premium features and priority support."
+      },
+      {
+        "role": "assistant",
+        "content": "FINAL(The annual membership costs $149.99 for individuals, $249.99 for families (up to 4 members), and $89.99 for students with valid ID.)"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "You are a SEARCH assistant with a Python REPL. You search documents - nothing else.\n\nOUTPUT FORMAT: Your response must START with ```python - no preamble, no explanation, just code.\n\nCONSTRAINT: Your training data is IRRELEVANT. You know NOTHING about this document.\n- Answering without searching = WRONG\n- Explaining instead of searching = WRONG\n- Any text before your code block = WRONG\n\nTOOLS:\n- `context` - the document (already loaded, DO NOT redefine)\n- `llm_query(question, context[start:end])` - ask sub-LLM about a chunk\n\nWORKFLOW:\n1. Write ```python with print() to search\n2. STOP immediately after code block\n3. Wait for output (appears in next message)\n4. Search more OR give FINAL(answer)\n\nWhen done searching, end with: FINAL(your evidence-based answer)\n\n---\n\nWhen is the application deadline?"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.find('deadline')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: -1"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.find('due date')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: -1"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.find('submission')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: 4521"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nprint(context[4521:4900])\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nsubmission window closes on March 15, 2025 at 11:59 PM EST. Late applications will not be accepted under any circumstances. We recommend submitting at least 48 hours before the closing time to avoid technical difficulties."
+      },
+      {
+        "role": "assistant",
+        "content": "FINAL(The application deadline is March 15, 2025 at 11:59 PM EST. Late applications will not be accepted, and it is recommended to submit at least 48 hours before the closing time.)"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "You are a SEARCH assistant with a Python REPL. You search documents - nothing else.\n\nOUTPUT FORMAT: Your response must START with ```python - no preamble, no explanation, just code.\n\nCONSTRAINT: Your training data is IRRELEVANT. You know NOTHING about this document.\n- Answering without searching = WRONG\n- Explaining instead of searching = WRONG\n- Any text before your code block = WRONG\n\nTOOLS:\n- `context` - the document (already loaded, DO NOT redefine)\n- `llm_query(question, context[start:end])` - ask sub-LLM about a chunk\n\nWORKFLOW:\n1. Write ```python with print() to search\n2. STOP immediately after code block\n3. Wait for output (appears in next message)\n4. Search more OR give FINAL(answer)\n\nWhen done searching, end with: FINAL(your evidence-based answer)\n\n---\n\nWhat are the side effects of the medication?"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.find('side effects')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: -1"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.find('adverse')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: -1"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.find('reactions')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: 8734"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nprint(context[8734:9200])\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nreactions reported during clinical trials include: headache (12%), nausea (8%), dizziness (5%), and fatigue (4%). Rare but serious reactions include allergic responses such as rash or difficulty breathing. Discontinue use and seek medical attention if severe symptoms occur."
+      },
+      {
+        "role": "assistant",
+        "content": "FINAL(The side effects of the medication include: headache (12%), nausea (8%), dizziness (5%), and fatigue (4%). Rare but serious reactions include allergic responses such as rash or difficulty breathing. Users should discontinue use and seek medical attention if severe symptoms occur.)"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "You are a SEARCH assistant with a Python REPL. You search documents - nothing else.\n\nOUTPUT FORMAT: Your response must START with ```python - no preamble, no explanation, just code.\n\nCONSTRAINT: Your training data is IRRELEVANT. You know NOTHING about this document.\n- Answering without searching = WRONG\n- Explaining instead of searching = WRONG\n- Any text before your code block = WRONG\n\nTOOLS:\n- `context` - the document (already loaded, DO NOT redefine)\n- `llm_query(question, context[start:end])` - ask sub-LLM about a chunk\n\nWORKFLOW:\n1. Write ```python with print() to search\n2. STOP immediately after code block\n3. Wait for output (appears in next message)\n4. Search more OR give FINAL(answer)\n\nWhen done searching, end with: FINAL(your evidence-based answer)\n\n---\n\nWhat is the refund policy?"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.find('refund')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: -1"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.find('return')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: -1"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.find('cancellation')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: 3892"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nprint(context[3892:4300])\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\ncancellation and money-back guarantee: Customers may request a full reimbursement within 30 days of purchase if unsatisfied with the product. After 30 days, a 15% restocking fee applies. Digital products are non-refundable once downloaded. Contact support@company.com to initiate the process."
+      },
+      {
+        "role": "assistant",
+        "content": "FINAL(The refund policy allows customers to request a full reimbursement within 30 days of purchase. After 30 days, a 15% restocking fee applies. Digital products are non-refundable once downloaded. Contact support@company.com to initiate the process.)"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "You are a SEARCH assistant with a Python REPL. You search documents - nothing else.\n\nOUTPUT FORMAT: Your response must START with ```python - no preamble, no explanation, just code.\n\nCONSTRAINT: Your training data is IRRELEVANT. You know NOTHING about this document.\n- Answering without searching = WRONG\n- Explaining instead of searching = WRONG\n- Any text before your code block = WRONG\n\nTOOLS:\n- `context` - the document (already loaded, DO NOT redefine)\n- `llm_query(question, context[start:end])` - ask sub-LLM about a chunk\n\nWORKFLOW:\n1. Write ```python with print() to search\n2. STOP immediately after code block\n3. Wait for output (appears in next message)\n4. Search more OR give FINAL(answer)\n\nWhen done searching, end with: FINAL(your evidence-based answer)\n\n---\n\nWhat qualifications are required for the job?"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.find('qualifications')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: -1"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.find('requirements')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: -1"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.find('experience')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: -1"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.find('candidates')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: 1205"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nprint(context[1205:1650])\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\ncandidates must possess: Bachelor's degree in Computer Science or related field, minimum 3 years of professional software development, proficiency in Python and JavaScript, strong communication skills. Preferred: Master's degree, familiarity with cloud platforms (AWS/GCP), and prior team leadership."
+      },
+      {
+        "role": "assistant",
+        "content": "FINAL(The job requires: Bachelor's degree in Computer Science or related field, minimum 3 years of professional software development, proficiency in Python and JavaScript, and strong communication skills. Preferred qualifications include a Master's degree, familiarity with cloud platforms (AWS/GCP), and prior team leadership experience.)"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "You are a SEARCH assistant with a Python REPL. You search documents - nothing else.\n\nOUTPUT FORMAT: Your response must START with ```python - no preamble, no explanation, just code.\n\nCONSTRAINT: Your training data is IRRELEVANT. You know NOTHING about this document.\n- Answering without searching = WRONG\n- Explaining instead of searching = WRONG\n- Any text before your code block = WRONG\n\nTOOLS:\n- `context` - the document (already loaded, DO NOT redefine)\n- `llm_query(question, context[start:end])` - ask sub-LLM about a chunk\n\nWORKFLOW:\n1. Write ```python with print() to search\n2. STOP immediately after code block\n3. Wait for output (appears in next message)\n4. Search more OR give FINAL(answer)\n\nWhen done searching, end with: FINAL(your evidence-based answer)\n\n---\n\nWhat is the maximum weight allowed for luggage?"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.find('weight')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: -1"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.find('luggage')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: -1"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.find('baggage')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: 5672"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nprint(context[5672:6100])\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nbaggage allowance policy: Each passenger may check up to two bags not exceeding 50 lbs (23 kg) each. Carry-on items must fit in the overhead compartment and weigh no more than 22 lbs (10 kg). Overweight fees: $75 for bags between 51-70 lbs, $150 for bags between 71-100 lbs."
+      },
+      {
+        "role": "assistant",
+        "content": "FINAL(The maximum weight allowed for checked luggage is 50 lbs (23 kg) per bag, with up to two bags allowed. Carry-on items must weigh no more than 22 lbs (10 kg). Overweight fees apply: $75 for bags between 51-70 lbs, and $150 for bags between 71-100 lbs.)"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "You are a SEARCH assistant with a Python REPL. You search documents - nothing else.\n\nOUTPUT FORMAT: Your response must START with ```python - no preamble, no explanation, just code.\n\nCONSTRAINT: Your training data is IRRELEVANT. You know NOTHING about this document.\n- Answering without searching = WRONG\n- Explaining instead of searching = WRONG\n- Any text before your code block = WRONG\n\nTOOLS:\n- `context` - the document (already loaded, DO NOT redefine)\n- `llm_query(question, context[start:end])` - ask sub-LLM about a chunk\n\nWORKFLOW:\n1. Write ```python with print() to search\n2. STOP immediately after code block\n3. Wait for output (appears in next message)\n4. Search more OR give FINAL(answer)\n\nWhen done searching, end with: FINAL(your evidence-based answer)\n\n---\n\nHow long is the warranty period?"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.find('warranty')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: -1"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.find('guarantee')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: -1"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.find('coverage')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: 7823"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nprint(context[7823:8250])\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\ncoverage period and protection plan: All products come with a standard 2-year manufacturer's protection against defects in materials and workmanship. Extended protection plans are available for purchase: 3-year plan ($49), 5-year plan ($79). Coverage begins from the date of original purchase."
+      },
+      {
+        "role": "assistant",
+        "content": "FINAL(The standard warranty period is 2 years, covering defects in materials and workmanship. Extended protection plans are available: 3-year plan for $49 and 5-year plan for $79. Coverage begins from the date of original purchase.)"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "You are a SEARCH assistant with a Python REPL. You search documents - nothing else.\n\nOUTPUT FORMAT: Your response must START with ```python - no preamble, no explanation, just code.\n\nCONSTRAINT: Your training data is IRRELEVANT. You know NOTHING about this document.\n- Answering without searching = WRONG\n- Explaining instead of searching = WRONG\n- Any text before your code block = WRONG\n\nTOOLS:\n- `context` - the document (already loaded, DO NOT redefine)\n- `llm_query(question, context[start:end])` - ask sub-LLM about a chunk\n\nWORKFLOW:\n1. Write ```python with print() to search\n2. STOP immediately after code block\n3. Wait for output (appears in next message)\n4. Search more OR give FINAL(answer)\n\nWhen done searching, end with: FINAL(your evidence-based answer)\n\n---\n\nWhat is the company's work-from-home policy?"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.find('work-from-home')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: -1"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.find('remote')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: -1"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.find('telecommut')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: -1"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.find('hybrid')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: 2341"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nprint(context[2341:2800])\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nhybrid work arrangement: Employees may work from home up to 3 days per week after completing their 90-day probationary period. Core in-office days are Tuesday and Thursday. Manager approval is required for fully distributed arrangements. Equipment stipend of $500 is provided for home office setup."
+      },
+      {
+        "role": "assistant",
+        "content": "FINAL(The company's work-from-home policy allows employees to work from home up to 3 days per week after completing a 90-day probationary period. Tuesday and Thursday are mandatory in-office days. Manager approval is required for fully remote arrangements. A $500 equipment stipend is provided for home office setup.)"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "You are a SEARCH assistant with a Python REPL. You search documents - nothing else.\n\nOUTPUT FORMAT: Your response must START with ```python - no preamble, no explanation, just code.\n\nCONSTRAINT: Your training data is IRRELEVANT. You know NOTHING about this document.\n- Answering without searching = WRONG\n- Explaining instead of searching = WRONG\n- Any text before your code block = WRONG\n\nTOOLS:\n- `context` - the document (already loaded, DO NOT redefine)\n- `llm_query(question, context[start:end])` - ask sub-LLM about a chunk\n\nWORKFLOW:\n1. Write ```python with print() to search\n2. STOP immediately after code block\n3. Wait for output (appears in next message)\n4. Search more OR give FINAL(answer)\n\nWhen done searching, end with: FINAL(your evidence-based answer)\n\n---\n\nWhat are the business hours of operation?"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.find('hours')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: -1"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.find('open')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: -1"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.find('schedule')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: 892"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nprint(context[892:1300])\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nschedule of operations: Monday through Friday 8:00 AM to 6:00 PM, Saturday 9:00 AM to 4:00 PM. Closed on Sundays and federal holidays. Extended evening availability until 8:00 PM on Wednesdays. Phone support available 24/7 at 1-800-555-0123."
+      },
+      {
+        "role": "assistant",
+        "content": "FINAL(Business hours are Monday through Friday 8:00 AM to 6:00 PM, Saturday 9:00 AM to 4:00 PM, with extended hours until 8:00 PM on Wednesdays. Closed on Sundays and federal holidays. Phone support is available 24/7 at 1-800-555-0123.)"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "You are a SEARCH assistant with a Python REPL. You search documents - nothing else.\n\nOUTPUT FORMAT: Your response must START with ```python - no preamble, no explanation, just code.\n\nCONSTRAINT: Your training data is IRRELEVANT. You know NOTHING about this document.\n- Answering without searching = WRONG\n- Explaining instead of searching = WRONG\n- Any text before your code block = WRONG\n\nTOOLS:\n- `context` - the document (already loaded, DO NOT redefine)\n- `llm_query(question, context[start:end])` - ask sub-LLM about a chunk\n\nWORKFLOW:\n1. Write ```python with print() to search\n2. STOP immediately after code block\n3. Wait for output (appears in next message)\n4. Search more OR give FINAL(answer)\n\nWhen done searching, end with: FINAL(your evidence-based answer)\n\n---\n\nWhat is the maximum pressure rating for the hydraulic system?"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\ncontext = open('hydraulic_specs.txt').read()\nidx = context.find('pressure')\nprint(context[idx:idx+200])\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nERROR: You cannot redefine 'context'. Use context.find() to search the existing text."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.find('pressure')\nprint(idx, context[idx:idx+300] if idx != -1 else 'not found')\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\n1847 pressure rating: 3000 PSI maximum operating pressure. Do not exceed this limit under any circumstances. System relief valve set at 3200 PSI."
+      },
+      {
+        "role": "assistant",
+        "content": "FINAL(The maximum pressure rating for the hydraulic system is 3000 PSI, with the relief valve set at 3200 PSI)"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "You are a SEARCH assistant with a Python REPL. You search documents - nothing else.\n\nOUTPUT FORMAT: Your response must START with ```python - no preamble, no explanation, just code.\n\nCONSTRAINT: Your training data is IRRELEVANT. You know NOTHING about this document.\n- Answering without searching = WRONG\n- Explaining instead of searching = WRONG\n- Any text before your code block = WRONG\n\nTOOLS:\n- `context` - the document (already loaded, DO NOT redefine)\n- `llm_query(question, context[start:end])` - ask sub-LLM about a chunk\n\nWORKFLOW:\n1. Write ```python with print() to search\n2. STOP immediately after code block\n3. Wait for output (appears in next message)\n4. Search more OR give FINAL(answer)\n\nWhen done searching, end with: FINAL(your evidence-based answer)\n\n---\n\nWho is the primary contact for vendor relations?"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\ncontext = \"\"\"\nVendor contact information...\n\"\"\"\nprint(context.find('contact'))\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nERROR: You cannot redefine 'context'. Use context.find() to search the existing text."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.find('vendor')\nprint(idx, context[idx:idx+400] if idx != -1 else 'not found')\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\n2103 vendor relations department. Primary contact: Sarah Mitchell, Director of Vendor Relations. Email: s.mitchell@company.com, Phone: 555-0142. Secondary contact: James Wu"
+      },
+      {
+        "role": "assistant",
+        "content": "FINAL(The primary contact for vendor relations is Sarah Mitchell, Director of Vendor Relations, reachable at s.mitchell@company.com or 555-0142)"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "You are a SEARCH assistant with a Python REPL. You search documents - nothing else.\n\nOUTPUT FORMAT: Your response must START with ```python - no preamble, no explanation, just code.\n\nCONSTRAINT: Your training data is IRRELEVANT. You know NOTHING about this document.\n- Answering without searching = WRONG\n- Explaining instead of searching = WRONG\n- Any text before your code block = WRONG\n\nTOOLS:\n- `context` - the document (already loaded, DO NOT redefine)\n- `llm_query(question, context[start:end])` - ask sub-LLM about a chunk\n\nWORKFLOW:\n1. Write ```python with print() to search\n2. STOP immediately after code block\n3. Wait for output (appears in next message)\n4. Search more OR give FINAL(answer)\n\nWhen done searching, end with: FINAL(your evidence-based answer)\n\n---\n\nWhat temperature range is acceptable for storage?"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nwith open('document.txt', 'r') as f:\n    context = f.read()\nidx = context.find('temperature')\nprint(context[idx:idx+200])\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nERROR: You cannot redefine 'context'. Use context.find() to search the existing text."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.find('temperature')\nprint(idx, context[idx:idx+250] if idx != -1 else 'not found')\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\n892 temperature requirements for storage: maintain between 35\u00b0F and 75\u00b0F (2\u00b0C to 24\u00b0C). Humidity should not exceed 60%. Avoid direct sunlight and heat sources."
+      },
+      {
+        "role": "assistant",
+        "content": "FINAL(The acceptable storage temperature range is 35\u00b0F to 75\u00b0F (2\u00b0C to 24\u00b0C), with humidity not exceeding 60%)"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "You are a SEARCH assistant with a Python REPL. You search documents - nothing else.\n\nOUTPUT FORMAT: Your response must START with ```python - no preamble, no explanation, just code.\n\nCONSTRAINT: Your training data is IRRELEVANT. You know NOTHING about this document.\n- Answering without searching = WRONG\n- Explaining instead of searching = WRONG\n- Any text before your code block = WRONG\n\nTOOLS:\n- `context` - the document (already loaded, DO NOT redefine)\n- `llm_query(question, context[start:end])` - ask sub-LLM about a chunk\n\nWORKFLOW:\n1. Write ```python with print() to search\n2. STOP immediately after code block\n3. Wait for output (appears in next message)\n4. Search more OR give FINAL(answer)\n\nWhen done searching, end with: FINAL(your evidence-based answer)\n\n---\n\nWhat is the warranty period for electronic components?"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\ncontext = load_document('warranty_info.pdf')\nresult = context.find('warranty')\nprint(result)\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nERROR: You cannot redefine 'context'. Use context.find() to search the existing text."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.find('warranty')\nprint(idx, context[idx:idx+350] if idx != -1 else 'not found')\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\n4521 warranty coverage details:\n- Electronic components: 24 months from date of purchase\n- Mechanical parts: 12 months from date of purchase\n- Labor: 90 days from installation\nAll warranty claims must be submitted within 30 days of discovering the defect."
+      },
+      {
+        "role": "assistant",
+        "content": "FINAL(The warranty period for electronic components is 24 months from date of purchase)"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "You are a SEARCH assistant with a Python REPL. You search documents - nothing else.\n\nOUTPUT FORMAT: Your response must START with ```python - no preamble, no explanation, just code.\n\nCONSTRAINT: Your training data is IRRELEVANT. You know NOTHING about this document.\n- Answering without searching = WRONG\n- Explaining instead of searching = WRONG\n- Any text before your code block = WRONG\n\nTOOLS:\n- `context` - the document (already loaded, DO NOT redefine)\n- `llm_query(question, context[start:end])` - ask sub-LLM about a chunk\n\nWORKFLOW:\n1. Write ```python with print() to search\n2. STOP immediately after code block\n3. Wait for output (appears in next message)\n4. Search more OR give FINAL(answer)\n\nWhen done searching, end with: FINAL(your evidence-based answer)\n\n---\n\nWhat are the required certifications for operators?"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\ncontext = requests.get('http://docs.internal/certifications').text\nidx = context.find('certification')\nprint(context[idx:idx+300])\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nERROR: You cannot redefine 'context'. Use context.find() to search the existing text."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.find('certification')\nprint(idx, context[idx:idx+400] if idx != -1 else 'not found')\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\n1203 certification requirements for equipment operators:\n1. OSHA 10-Hour General Industry certification\n2. Company-specific equipment training (minimum 40 hours)\n3. Annual safety refresher course\n4. Valid forklift license (if applicable)\nAll certifications must be current and on file with HR."
+      },
+      {
+        "role": "assistant",
+        "content": "FINAL(Required operator certifications are: OSHA 10-Hour General Industry certification, company-specific equipment training (40+ hours), annual safety refresher course, and valid forklift license if applicable)"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "You are a SEARCH assistant with a Python REPL. You search documents - nothing else.\n\nOUTPUT FORMAT: Your response must START with ```python - no preamble, no explanation, just code.\n\nCONSTRAINT: Your training data is IRRELEVANT. You know NOTHING about this document.\n- Answering without searching = WRONG\n- Explaining instead of searching = WRONG\n- Any text before your code block = WRONG\n\nTOOLS:\n- `context` - the document (already loaded, DO NOT redefine)\n- `llm_query(question, context[start:end])` - ask sub-LLM about a chunk\n\nWORKFLOW:\n1. Write ```python with print() to search\n2. STOP immediately after code block\n3. Wait for output (appears in next message)\n4. Search more OR give FINAL(answer)\n\nWhen done searching, end with: FINAL(your evidence-based answer)\n\n---\n\nWhat is the vessel's maximum cargo capacity?"
+      },
+      {
+        "role": "assistant",
+        "content": "Based on typical maritime vessel specifications, cargo capacity depends on the vessel class. Container ships usually range from 1,000 to 24,000 TEU, while bulk carriers can hold between 10,000 to 400,000 DWT."
+      },
+      {
+        "role": "user",
+        "content": "Output:\nERROR: You MUST write a ```python code block to search the document. You cannot answer from memory. Start with:\n```python\nidx = context.find('vessel')\nprint(idx, context[idx:idx+500] if idx != -1 else 'not found')\n```"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.find('cargo capacity')\nprint(idx, context[idx:idx+400] if idx != -1 else 'not found')\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\n3892 cargo capacity specifications:\n- Maximum deadweight tonnage: 52,000 DWT\n- Container capacity: 3,800 TEU\n- Bulk cargo hold volume: 62,500 cubic meters\n- Maximum draft when fully loaded: 12.5 meters"
+      },
+      {
+        "role": "assistant",
+        "content": "FINAL(The vessel's maximum cargo capacity is 52,000 DWT, with container capacity of 3,800 TEU and bulk cargo hold volume of 62,500 cubic meters)"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "You are a SEARCH assistant with a Python REPL. You search documents - nothing else.\n\nOUTPUT FORMAT: Your response must START with ```python - no preamble, no explanation, just code.\n\nCONSTRAINT: Your training data is IRRELEVANT. You know NOTHING about this document.\n- Answering without searching = WRONG\n- Explaining instead of searching = WRONG\n- Any text before your code block = WRONG\n\nTOOLS:\n- `context` - the document (already loaded, DO NOT redefine)\n- `llm_query(question, context[start:end])` - ask sub-LLM about a chunk\n\nWORKFLOW:\n1. Write ```python with print() to search\n2. STOP immediately after code block\n3. Wait for output (appears in next message)\n4. Search more OR give FINAL(answer)\n\nWhen done searching, end with: FINAL(your evidence-based answer)\n\n---\n\nWhen was the company founded?"
+      },
+      {
+        "role": "assistant",
+        "content": "I don't have specific information about when this particular company was founded. Could you provide more context about which company you're referring to?"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nERROR: You MUST write a ```python code block to search the document. You cannot answer from memory. Start with:\n```python\nidx = context.find('vessel')\nprint(idx, context[idx:idx+500] if idx != -1 else 'not found')\n```"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.find('founded')\nprint(idx, context[idx:idx+300] if idx != -1 else 'not found')\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\n156 founded in 1987 by Margaret Chen and Robert Williams in San Francisco. The company started as a small consulting firm before expanding into manufacturing in 1995."
+      },
+      {
+        "role": "assistant",
+        "content": "FINAL(The company was founded in 1987 by Margaret Chen and Robert Williams in San Francisco)"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "You are a SEARCH assistant with a Python REPL. You search documents - nothing else.\n\nOUTPUT FORMAT: Your response must START with ```python - no preamble, no explanation, just code.\n\nCONSTRAINT: Your training data is IRRELEVANT. You know NOTHING about this document.\n- Answering without searching = WRONG\n- Explaining instead of searching = WRONG\n- Any text before your code block = WRONG\n\nTOOLS:\n- `context` - the document (already loaded, DO NOT redefine)\n- `llm_query(question, context[start:end])` - ask sub-LLM about a chunk\n\nWORKFLOW:\n1. Write ```python with print() to search\n2. STOP immediately after code block\n3. Wait for output (appears in next message)\n4. Search more OR give FINAL(answer)\n\nWhen done searching, end with: FINAL(your evidence-based answer)\n\n---\n\nWhat are the side effects of the medication?"
+      },
+      {
+        "role": "assistant",
+        "content": "Common side effects of medications can include nausea, headache, dizziness, and fatigue. However, specific side effects vary greatly depending on the medication in question. Please consult the medication's package insert or speak with a healthcare provider for accurate information."
+      },
+      {
+        "role": "user",
+        "content": "Output:\nERROR: You MUST write a ```python code block to search the document. You cannot answer from memory. Start with:\n```python\nidx = context.find('vessel')\nprint(idx, context[idx:idx+500] if idx != -1 else 'not found')\n```"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.find('side effect')\nprint(idx, context[idx:idx+500] if idx != -1 else 'not found')\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\n2847 side effects reported in clinical trials:\nCommon (>10%): drowsiness, dry mouth, headache\nUncommon (1-10%): nausea, blurred vision, constipation\nRare (<1%): allergic reactions, irregular heartbeat\nDiscontinue use and contact physician if severe reactions occur."
+      },
+      {
+        "role": "assistant",
+        "content": "FINAL(The medication's side effects are: Common (>10%) - drowsiness, dry mouth, headache; Uncommon (1-10%) - nausea, blurred vision, constipation; Rare (<1%) - allergic reactions, irregular heartbeat)"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "You are a SEARCH assistant with a Python REPL. You search documents - nothing else.\n\nOUTPUT FORMAT: Your response must START with ```python - no preamble, no explanation, just code.\n\nCONSTRAINT: Your training data is IRRELEVANT. You know NOTHING about this document.\n- Answering without searching = WRONG\n- Explaining instead of searching = WRONG\n- Any text before your code block = WRONG\n\nTOOLS:\n- `context` - the document (already loaded, DO NOT redefine)\n- `llm_query(question, context[start:end])` - ask sub-LLM about a chunk\n\nWORKFLOW:\n1. Write ```python with print() to search\n2. STOP immediately after code block\n3. Wait for output (appears in next message)\n4. Search more OR give FINAL(answer)\n\nWhen done searching, end with: FINAL(your evidence-based answer)\n\n---\n\nWhat is the minimum order quantity for wholesale?"
+      },
+      {
+        "role": "assistant",
+        "content": "Let me help you with wholesale ordering information. Typically, minimum order quantities vary by product type and supplier policies. For most wholesale arrangements, MOQs range from 50-500 units depending on the product category."
+      },
+      {
+        "role": "user",
+        "content": "Output:\nERROR: You MUST write a ```python code block to search the document. You cannot answer from memory. Start with:\n```python\nidx = context.find('vessel')\nprint(idx, context[idx:idx+500] if idx != -1 else 'not found')\n```"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.find('minimum order')\nprint(idx, context[idx:idx+350] if idx != -1 else 'not found')\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\n5621 minimum order quantities for wholesale accounts:\n- Standard products: 100 units per SKU\n- Custom/branded items: 500 units per SKU\n- Seasonal items: 250 units per SKU\nOrders below MOQ may be subject to a 15% small order surcharge. Contact sales for exceptions."
+      },
+      {
+        "role": "assistant",
+        "content": "FINAL(Minimum order quantities for wholesale are: 100 units per SKU for standard products, 500 units for custom/branded items, and 250 units for seasonal items. Orders below MOQ incur a 15% surcharge)"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "You are a SEARCH assistant with a Python REPL. You search documents - nothing else.\n\nOUTPUT FORMAT: Your response must START with ```python - no preamble, no explanation, just code.\n\nCONSTRAINT: Your training data is IRRELEVANT. You know NOTHING about this document.\n- Answering without searching = WRONG\n- Explaining instead of searching = WRONG\n- Any text before your code block = WRONG\n\nTOOLS:\n- `context` - the document (already loaded, DO NOT redefine)\n- `llm_query(question, context[start:end])` - ask sub-LLM about a chunk\n\nWORKFLOW:\n1. Write ```python with print() to search\n2. STOP immediately after code block\n3. Wait for output (appears in next message)\n4. Search more OR give FINAL(answer)\n\nWhen done searching, end with: FINAL(your evidence-based answer)\n\n---\n\nHow many employees does the organization have?"
+      },
+      {
+        "role": "assistant",
+        "content": "To answer your question about employee count, I would need to know which organization you're referring to. Employee numbers can range significantly based on the size and type of organization."
+      },
+      {
+        "role": "user",
+        "content": "Output:\nERROR: You MUST write a ```python code block to search the document. You cannot answer from memory. Start with:\n```python\nidx = context.find('vessel')\nprint(idx, context[idx:idx+500] if idx != -1 else 'not found')\n```"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.find('employee')\nprint(idx, context[idx:idx+400] if idx != -1 else 'not found')\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\n892 employee statistics as of Q4 2024:\n- Full-time employees: 2,847\n- Part-time employees: 523\n- Contractors: 189\n- Total workforce: 3,559\nHeadquarters: 1,200 employees\nRegional offices: 1,647 employees\nRemote workers: 712 employees"
+      },
+      {
+        "role": "assistant",
+        "content": "FINAL(The organization has 3,559 total workforce members: 2,847 full-time employees, 523 part-time employees, and 189 contractors)"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "You are a SEARCH assistant with a Python REPL. You search documents - nothing else.\n\nOUTPUT FORMAT: Your response must START with ```python - no preamble, no explanation, just code.\n\nCONSTRAINT: Your training data is IRRELEVANT. You know NOTHING about this document.\n- Answering without searching = WRONG\n- Explaining instead of searching = WRONG\n- Any text before your code block = WRONG\n\nTOOLS:\n- `context` - the document (already loaded, DO NOT redefine)\n- `llm_query(question, context[start:end])` - ask sub-LLM about a chunk\n\nWORKFLOW:\n1. Write ```python with print() to search\n2. STOP immediately after code block\n3. Wait for output (appears in next message)\n4. Search more OR give FINAL(answer)\n\nWhen done searching, end with: FINAL(your evidence-based answer)\n\n---\n\nWhat is the statute of limitations for filing a personal injury claim in this jurisdiction?"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.find('statute of limitations')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: 2847"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nprint(context[2847:3100])\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nstatute of limitations for personal injury claims is two (2) years from the date of injury. For claims involving minors, the limitation period does not begin until the minor reaches the age of majority (18 years). Medical malpractice claims must be filed within"
+      },
+      {
+        "role": "assistant",
+        "content": "FINAL(The statute of limitations for filing a personal injury claim is two (2) years from the date of injury. For minors, the limitation period does not begin until they reach age 18.)"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "You are a SEARCH assistant with a Python REPL. You search documents - nothing else.\n\nOUTPUT FORMAT: Your response must START with ```python - no preamble, no explanation, just code.\n\nCONSTRAINT: Your training data is IRRELEVANT. You know NOTHING about this document.\n- Answering without searching = WRONG\n- Explaining instead of searching = WRONG\n- Any text before your code block = WRONG\n\nTOOLS:\n- `context` - the document (already loaded, DO NOT redefine)\n- `llm_query(question, context[start:end])` - ask sub-LLM about a chunk\n\nWORKFLOW:\n1. Write ```python with print() to search\n2. STOP immediately after code block\n3. Wait for output (appears in next message)\n4. Search more OR give FINAL(answer)\n\nWhen done searching, end with: FINAL(your evidence-based answer)\n\n---\n\nWhat is the recommended dosage of metformin for this patient?"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.find('metformin')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: 1523"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nprint(context[1523:1850])\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nmetformin hydrochloride 500mg twice daily with meals. Patient tolerated initial dose well. Increased to 1000mg twice daily after 2 weeks per standard titration protocol. Current regimen: Metformin 1000mg BID. Monitor renal function quarterly. HbA1c target: <7.0%."
+      },
+      {
+        "role": "assistant",
+        "content": "FINAL(The recommended dosage is metformin 1000mg twice daily (BID), taken with meals. The patient was started at 500mg twice daily and titrated up after 2 weeks.)"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "You are a SEARCH assistant with a Python REPL. You search documents - nothing else.\n\nOUTPUT FORMAT: Your response must START with ```python - no preamble, no explanation, just code.\n\nCONSTRAINT: Your training data is IRRELEVANT. You know NOTHING about this document.\n- Answering without searching = WRONG\n- Explaining instead of searching = WRONG\n- Any text before your code block = WRONG\n\nTOOLS:\n- `context` - the document (already loaded, DO NOT redefine)\n- `llm_query(question, context[start:end])` - ask sub-LLM about a chunk\n\nWORKFLOW:\n1. Write ```python with print() to search\n2. STOP immediately after code block\n3. Wait for output (appears in next message)\n4. Search more OR give FINAL(answer)\n\nWhen done searching, end with: FINAL(your evidence-based answer)\n\n---\n\nWhat is the maximum torque specification for the cylinder head bolts?"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.find('cylinder head')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: 8934"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nprint(context[8934:9300])\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\ncylinder head bolt torque sequence must be followed precisely. Torque specifications: Step 1: 25 Nm (18 ft-lb), Step 2: 50 Nm (37 ft-lb), Step 3: 90 degrees rotation, Step 4: additional 90 degrees rotation. Final effective torque: approximately 95-105 Nm. Use new bolts for each installation; do not reuse TTY bolts."
+      },
+      {
+        "role": "assistant",
+        "content": "FINAL(The cylinder head bolts use a torque-to-yield sequence: Step 1: 25 Nm, Step 2: 50 Nm, Step 3: 90 degrees rotation, Step 4: additional 90 degrees rotation. Final effective torque is approximately 95-105 Nm. New bolts must be used for each installation.)"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "You are a SEARCH assistant with a Python REPL. You search documents - nothing else.\n\nOUTPUT FORMAT: Your response must START with ```python - no preamble, no explanation, just code.\n\nCONSTRAINT: Your training data is IRRELEVANT. You know NOTHING about this document.\n- Answering without searching = WRONG\n- Explaining instead of searching = WRONG\n- Any text before your code block = WRONG\n\nTOOLS:\n- `context` - the document (already loaded, DO NOT redefine)\n- `llm_query(question, context[start:end])` - ask sub-LLM about a chunk\n\nWORKFLOW:\n1. Write ```python with print() to search\n2. STOP immediately after code block\n3. Wait for output (appears in next message)\n4. Search more OR give FINAL(answer)\n\nWhen done searching, end with: FINAL(your evidence-based answer)\n\n---\n\nHow long should I bake the sourdough at what temperature?"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.find('bake')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: 4521"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nprint(context[4521:4850])\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nbake in a preheated Dutch oven at 450\u00b0F (230\u00b0C) with the lid on for 30 minutes. Remove lid and continue baking for 15-20 minutes until deep golden brown. Internal temperature should reach 205-210\u00b0F (96-99\u00b0C). Let cool on wire rack for at least 1 hour before slicing."
+      },
+      {
+        "role": "assistant",
+        "content": "FINAL(Bake the sourdough at 450\u00b0F (230\u00b0C) in a Dutch oven with lid on for 30 minutes, then remove lid and bake 15-20 minutes more until deep golden brown. Internal temperature should reach 205-210\u00b0F.)"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "You are a SEARCH assistant with a Python REPL. You search documents - nothing else.\n\nOUTPUT FORMAT: Your response must START with ```python - no preamble, no explanation, just code.\n\nCONSTRAINT: Your training data is IRRELEVANT. You know NOTHING about this document.\n- Answering without searching = WRONG\n- Explaining instead of searching = WRONG\n- Any text before your code block = WRONG\n\nTOOLS:\n- `context` - the document (already loaded, DO NOT redefine)\n- `llm_query(question, context[start:end])` - ask sub-LLM about a chunk\n\nWORKFLOW:\n1. Write ```python with print() to search\n2. STOP immediately after code block\n3. Wait for output (appears in next message)\n4. Search more OR give FINAL(answer)\n\nWhen done searching, end with: FINAL(your evidence-based answer)\n\n---\n\nWhat is the termination notice period required under this contract?"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.find('termination')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: 12405"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nprint(context[12405:12750])\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nTermination. Either party may terminate this Agreement for convenience upon sixty (60) days prior written notice to the other party. Termination for cause requires thirty (30) days written notice and opportunity to cure. Upon termination, all outstanding invoices become immediately due and payable."
+      },
+      {
+        "role": "assistant",
+        "content": "FINAL(The contract requires 60 days prior written notice for termination for convenience, or 30 days written notice with opportunity to cure for termination for cause.)"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "You are a SEARCH assistant with a Python REPL. You search documents - nothing else.\n\nOUTPUT FORMAT: Your response must START with ```python - no preamble, no explanation, just code.\n\nCONSTRAINT: Your training data is IRRELEVANT. You know NOTHING about this document.\n- Answering without searching = WRONG\n- Explaining instead of searching = WRONG\n- Any text before your code block = WRONG\n\nTOOLS:\n- `context` - the document (already loaded, DO NOT redefine)\n- `llm_query(question, context[start:end])` - ask sub-LLM about a chunk\n\nWORKFLOW:\n1. Write ```python with print() to search\n2. STOP immediately after code block\n3. Wait for output (appears in next message)\n4. Search more OR give FINAL(answer)\n\nWhen done searching, end with: FINAL(your evidence-based answer)\n\n---\n\nWhat sample size was used in the clinical trial and what was the primary endpoint?"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.find('sample size')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: 3892"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nprint(context[3892:4300])\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nsample size of 1,247 participants was enrolled across 45 clinical sites. Participants were randomized 1:1 to treatment or placebo. The primary endpoint was reduction in HbA1c from baseline at 24 weeks. Secondary endpoints included fasting plasma glucose, body weight change, and proportion achieving HbA1c <7.0%. Statistical significance was set at p<0.05."
+      },
+      {
+        "role": "assistant",
+        "content": "FINAL(The clinical trial enrolled 1,247 participants across 45 sites, randomized 1:1 to treatment or placebo. The primary endpoint was reduction in HbA1c from baseline at 24 weeks.)"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "You are a SEARCH assistant with a Python REPL. You search documents - nothing else.\n\nOUTPUT FORMAT: Your response must START with ```python - no preamble, no explanation, just code.\n\nCONSTRAINT: Your training data is IRRELEVANT. You know NOTHING about this document.\n- Answering without searching = WRONG\n- Explaining instead of searching = WRONG\n- Any text before your code block = WRONG\n\nTOOLS:\n- `context` - the document (already loaded, DO NOT redefine)\n- `llm_query(question, context[start:end])` - ask sub-LLM about a chunk\n\nWORKFLOW:\n1. Write ```python with print() to search\n2. STOP immediately after code block\n3. Wait for output (appears in next message)\n4. Search more OR give FINAL(answer)\n\nWhen done searching, end with: FINAL(your evidence-based answer)\n\n---\n\nHow many vacation days do employees receive after 5 years of service?"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.find('vacation')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: 7823"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nprint(context[7823:8200])\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nvacation accrual schedule based on length of service: 0-2 years: 10 days per year; 3-4 years: 15 days per year; 5-9 years: 20 days per year; 10+ years: 25 days per year. Vacation days must be used within the calendar year and cannot be carried over except with written manager approval (maximum 5 days carryover)."
+      },
+      {
+        "role": "assistant",
+        "content": "FINAL(Employees with 5 years of service receive 20 vacation days per year. This applies to employees with 5-9 years of service.)"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "You are a SEARCH assistant with a Python REPL. You search documents - nothing else.\n\nOUTPUT FORMAT: Your response must START with ```python - no preamble, no explanation, just code.\n\nCONSTRAINT: Your training data is IRRELEVANT. You know NOTHING about this document.\n- Answering without searching = WRONG\n- Explaining instead of searching = WRONG\n- Any text before your code block = WRONG\n\nTOOLS:\n- `context` - the document (already loaded, DO NOT redefine)\n- `llm_query(question, context[start:end])` - ask sub-LLM about a chunk\n\nWORKFLOW:\n1. Write ```python with print() to search\n2. STOP immediately after code block\n3. Wait for output (appears in next message)\n4. Search more OR give FINAL(answer)\n\nWhen done searching, end with: FINAL(your evidence-based answer)\n\n---\n\nWhat is the battery capacity and expected battery life of this laptop?"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.find('battery')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: 5621"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nprint(context[5621:5950])\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nbattery specifications: 72Wh lithium-polymer, 4-cell configuration. Expected battery life: up to 14 hours (video playback), up to 10 hours (typical productivity workload), up to 6 hours (heavy development/compilation). Fast charging supported: 0-50% in 30 minutes with included 100W USB-C adapter."
+      },
+      {
+        "role": "assistant",
+        "content": "FINAL(The laptop has a 72Wh lithium-polymer battery (4-cell). Expected battery life is up to 14 hours for video playback, up to 10 hours for typical productivity, and up to 6 hours for heavy development work. Fast charging reaches 50% in 30 minutes.)"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "You are a SEARCH assistant with a Python REPL. You search documents - nothing else.\n\nOUTPUT FORMAT: Your response must START with ```python - no preamble, no explanation, just code.\n\nCONSTRAINT: Your training data is IRRELEVANT. You know NOTHING about this document.\n- Answering without searching = WRONG\n- Explaining instead of searching = WRONG\n- Any text before your code block = WRONG\n\nTOOLS:\n- `context` - the document (already loaded, DO NOT redefine)\n- `llm_query(question, context[start:end])` - ask sub-LLM about a chunk\n\nWORKFLOW:\n1. Write ```python with print() to search\n2. STOP immediately after code block\n3. Wait for output (appears in next message)\n4. Search more OR give FINAL(answer)\n\nWhen done searching, end with: FINAL(your evidence-based answer)\n\n---\n\nWhat is the best time of year to visit Kyoto and what should I see?"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.find('Kyoto')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: 2156"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nprint(context[2156:2600])\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nKyoto is best visited during spring (late March to early April) for cherry blossoms or autumn (mid-November) for spectacular fall foliage. Must-see attractions include Fushimi Inari Shrine with its thousands of vermillion torii gates, the golden Kinkaku-ji Temple, the serene Arashiyama Bamboo Grove, and the historic Gion district. Book accommodations 3-4 months in advance during peak seasons."
+      },
+      {
+        "role": "assistant",
+        "content": "FINAL(The best times to visit Kyoto are spring (late March to early April) for cherry blossoms or autumn (mid-November) for fall foliage. Must-see attractions include Fushimi Inari Shrine, Kinkaku-ji Temple, Arashiyama Bamboo Grove, and the Gion district. Book accommodations 3-4 months ahead during peak seasons.)"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "You are a SEARCH assistant with a Python REPL. You search documents - nothing else.\n\nOUTPUT FORMAT: Your response must START with ```python - no preamble, no explanation, just code.\n\nCONSTRAINT: Your training data is IRRELEVANT. You know NOTHING about this document.\n- Answering without searching = WRONG\n- Explaining instead of searching = WRONG\n- Any text before your code block = WRONG\n\nTOOLS:\n- `context` - the document (already loaded, DO NOT redefine)\n- `llm_query(question, context[start:end])` - ask sub-LLM about a chunk\n\nWORKFLOW:\n1. Write ```python with print() to search\n2. STOP immediately after code block\n3. Wait for output (appears in next message)\n4. Search more OR give FINAL(answer)\n\nWhen done searching, end with: FINAL(your evidence-based answer)\n\n---\n\nWhat was the company's net revenue and profit margin for Q3?"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.find('Q3')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: 1847"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nprint(context[1847:2200])\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nQ3 Financial Highlights: Net revenue of $4.2 billion, representing 12% year-over-year growth. Gross profit margin improved to 42.3% from 39.8% in the prior year period. Operating income reached $892 million with an operating margin of 21.2%. Net income attributable to shareholders was $673 million, or $2.14 per diluted share."
+      },
+      {
+        "role": "assistant",
+        "content": "FINAL(Q3 net revenue was $4.2 billion (12% YoY growth). Gross profit margin was 42.3%, and operating margin was 21.2%. Net income was $673 million or $2.14 per diluted share.)"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "You are a SEARCH assistant with a Python REPL. You search documents - nothing else.\n\nOUTPUT FORMAT: Your response must START with ```python - no preamble, no explanation, just code.\n\nCONSTRAINT: Your training data is IRRELEVANT. You know NOTHING about this document.\n- Answering without searching = WRONG\n- Explaining instead of searching = WRONG\n- Any text before your code block = WRONG\n\nTOOLS:\n- `context` - the document (already loaded, DO NOT redefine)\n- `llm_query(question, context[start:end])` - ask sub-LLM about a chunk\n\nWORKFLOW:\n1. Write ```python with print() to search\n2. STOP immediately after code block\n3. Wait for output (appears in next message)\n4. Search more OR give FINAL(answer)\n\nWhen done searching, end with: FINAL(your evidence-based answer)\n\n---\n\nWhat are the system requirements AND the pricing for the enterprise plan?"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.lower().find('requirement')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: 2847"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nprint(context[2847:3200])\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nRequirements:\n- Operating System: Windows 10/11, macOS 12+, or Ubuntu 20.04+\n- RAM: Minimum 8GB, recommended 16GB\n- Storage: 500MB free disk space\n- Internet: Broadband connection required for cloud features\n- Browser: Chrome 90+, Firefox 88+, Safari 14+, or Edge 90+"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.lower().find('enterprise')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: 5621"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nprint(context[5621:5950])\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nEnterprise Plan: $299/user/month (billed annually)\n- Unlimited projects and storage\n- Priority 24/7 support\n- Custom integrations and API access\n- Dedicated account manager\n- SSO and advanced security features\n- 99.9% uptime SLA"
+      },
+      {
+        "role": "assistant",
+        "content": "FINAL(System Requirements: Windows 10/11, macOS 12+, or Ubuntu 20.04+; minimum 8GB RAM (16GB recommended); 500MB storage; broadband internet; Chrome 90+, Firefox 88+, Safari 14+, or Edge 90+. Enterprise Plan Pricing: $299/user/month billed annually, includes unlimited projects/storage, 24/7 priority support, custom integrations, dedicated account manager, SSO, and 99.9% uptime SLA.)"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "You are a SEARCH assistant with a Python REPL. You search documents - nothing else.\n\nOUTPUT FORMAT: Your response must START with ```python - no preamble, no explanation, just code.\n\nCONSTRAINT: Your training data is IRRELEVANT. You know NOTHING about this document.\n- Answering without searching = WRONG\n- Explaining instead of searching = WRONG\n- Any text before your code block = WRONG\n\nTOOLS:\n- `context` - the document (already loaded, DO NOT redefine)\n- `llm_query(question, context[start:end])` - ask sub-LLM about a chunk\n\nWORKFLOW:\n1. Write ```python with print() to search\n2. STOP immediately after code block\n3. Wait for output (appears in next message)\n4. Search more OR give FINAL(answer)\n\nWhen done searching, end with: FINAL(your evidence-based answer)\n\n---\n\nCompare the warranty period for Product A versus Product B."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.lower().find('product a')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: 1203"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nprint(context[1203:1550])\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nProduct A - Premium Series\nPrice: $549.99\nWarranty: 3-year limited warranty covering manufacturing defects and hardware failures. Extended warranty available for purchase (up to 5 years total coverage). Does not cover accidental damage or water damage."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.lower().find('product b')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: 2891"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nprint(context[2891:3250])\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nProduct B - Standard Series\nPrice: $299.99\nWarranty: 1-year limited warranty covering manufacturing defects only. Extended warranty not available. Accidental damage protection can be purchased separately through our partner program for $49.99/year."
+      },
+      {
+        "role": "assistant",
+        "content": "FINAL(Product A has a 3-year limited warranty covering manufacturing defects and hardware failures, with optional extension to 5 years. Product B has only a 1-year limited warranty covering manufacturing defects, with no extended warranty option available. Product A offers significantly better warranty coverage.)"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "You are a SEARCH assistant with a Python REPL. You search documents - nothing else.\n\nOUTPUT FORMAT: Your response must START with ```python - no preamble, no explanation, just code.\n\nCONSTRAINT: Your training data is IRRELEVANT. You know NOTHING about this document.\n- Answering without searching = WRONG\n- Explaining instead of searching = WRONG\n- Any text before your code block = WRONG\n\nTOOLS:\n- `context` - the document (already loaded, DO NOT redefine)\n- `llm_query(question, context[start:end])` - ask sub-LLM about a chunk\n\nWORKFLOW:\n1. Write ```python with print() to search\n2. STOP immediately after code block\n3. Wait for output (appears in next message)\n4. Search more OR give FINAL(answer)\n\nWhen done searching, end with: FINAL(your evidence-based answer)\n\n---\n\nWhat is the refund process and what is the deadline to request one?"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.lower().find('refund')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: 4521"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nprint(context[4521:4900])\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nRefund Policy\n\nTo request a refund, customers must:\n1. Log into their account and navigate to Order History\n2. Select the order and click \"Request Refund\"\n3. Provide reason for return and upload photos if item is damaged\n4. Print the prepaid shipping label\n5. Ship item within 7 business days of request approval"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.lower().find('days of purchase')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: 5102"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nprint(context[5050:5350])\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nRefund Eligibility Window:\nAll refund requests must be submitted within 30 days of purchase date. After 30 days, only store credit will be issued. Items must be unused and in original packaging. Digital products and gift cards are non-refundable."
+      },
+      {
+        "role": "assistant",
+        "content": "FINAL(Refund Process: 1) Log into account, go to Order History, 2) Select order and click \"Request Refund\", 3) Provide reason and photos if damaged, 4) Print prepaid shipping label, 5) Ship within 7 business days of approval. Deadline: Refund requests must be submitted within 30 days of purchase for full refund; after 30 days only store credit is available.)"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "You are a SEARCH assistant with a Python REPL. You search documents - nothing else.\n\nOUTPUT FORMAT: Your response must START with ```python - no preamble, no explanation, just code.\n\nCONSTRAINT: Your training data is IRRELEVANT. You know NOTHING about this document.\n- Answering without searching = WRONG\n- Explaining instead of searching = WRONG\n- Any text before your code block = WRONG\n\nTOOLS:\n- `context` - the document (already loaded, DO NOT redefine)\n- `llm_query(question, context[start:end])` - ask sub-LLM about a chunk\n\nWORKFLOW:\n1. Write ```python with print() to search\n2. STOP immediately after code block\n3. Wait for output (appears in next message)\n4. Search more OR give FINAL(answer)\n\nWhen done searching, end with: FINAL(your evidence-based answer)\n\n---\n\nWho is the project lead and what is the project timeline?"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.lower().find('project lead')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: 892"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nprint(context[892:1200])\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nProject Lead: Sarah Chen, Senior Director of Engineering\nEmail: s.chen@company.com\nPhone: (555) 234-5678\n\nSarah has 15 years of experience in software development and has led multiple successful product launches including the v2.0 platform migration."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.lower().find('timeline')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: 3456"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nprint(context[3456:3850])\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nTimeline and Milestones:\n- Phase 1 (Q1 2024): Requirements gathering and design - COMPLETED\n- Phase 2 (Q2 2024): Core development - IN PROGRESS\n- Phase 3 (Q3 2024): Testing and QA\n- Phase 4 (Q4 2024): Beta release and feedback\n- Final Launch: January 15, 2025"
+      },
+      {
+        "role": "assistant",
+        "content": "FINAL(Project Lead: Sarah Chen, Senior Director of Engineering (s.chen@company.com). Timeline: Phase 1 requirements/design completed in Q1 2024; Phase 2 core development in progress Q2 2024; Phase 3 testing in Q3 2024; Phase 4 beta release Q4 2024; Final Launch scheduled for January 15, 2025.)"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "You are a SEARCH assistant with a Python REPL. You search documents - nothing else.\n\nOUTPUT FORMAT: Your response must START with ```python - no preamble, no explanation, just code.\n\nCONSTRAINT: Your training data is IRRELEVANT. You know NOTHING about this document.\n- Answering without searching = WRONG\n- Explaining instead of searching = WRONG\n- Any text before your code block = WRONG\n\nTOOLS:\n- `context` - the document (already loaded, DO NOT redefine)\n- `llm_query(question, context[start:end])` - ask sub-LLM about a chunk\n\nWORKFLOW:\n1. Write ```python with print() to search\n2. STOP immediately after code block\n3. Wait for output (appears in next message)\n4. Search more OR give FINAL(answer)\n\nWhen done searching, end with: FINAL(your evidence-based answer)\n\n---\n\nWhat are the prerequisites for the course and what certification do you get upon completion?"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.lower().find('prerequisite')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: 1567"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nprint(context[1567:1950])\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nPrerequisites:\n- Bachelor's degree in Computer Science, Engineering, or related field (or equivalent work experience)\n- Minimum 2 years of programming experience in any language\n- Basic understanding of statistics and linear algebra\n- Familiarity with Python recommended but not required\n- Access to a computer with minimum 16GB RAM for lab exercises"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.lower().find('certification')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: 6234"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nprint(context[6234:6600])\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nCertification and Accreditation:\nUpon successful completion of all modules and passing the final assessment (minimum score 80%), participants receive:\n- AWS Certified Machine Learning Engineer - Associate certificate\n- Digital badge for LinkedIn profile\n- 40 CPE credits for professional development\n- Certificate valid for 3 years with renewal options"
+      },
+      {
+        "role": "assistant",
+        "content": "FINAL(Prerequisites: Bachelor's degree in CS/Engineering or equivalent experience, 2+ years programming experience, basic statistics and linear algebra knowledge, Python familiarity recommended, computer with 16GB RAM. Certification: AWS Certified Machine Learning Engineer - Associate certificate upon passing final assessment with 80%+ score, includes LinkedIn digital badge, 40 CPE credits, valid for 3 years.)"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "You are a SEARCH assistant with a Python REPL. You search documents - nothing else.\n\nOUTPUT FORMAT: Your response must START with ```python - no preamble, no explanation, just code.\n\nCONSTRAINT: Your training data is IRRELEVANT. You know NOTHING about this document.\n- Answering without searching = WRONG\n- Explaining instead of searching = WRONG\n- Any text before your code block = WRONG\n\nTOOLS:\n- `context` - the document (already loaded, DO NOT redefine)\n- `llm_query(question, context[start:end])` - ask sub-LLM about a chunk\n\nWORKFLOW:\n1. Write ```python with print() to search\n2. STOP immediately after code block\n3. Wait for output (appears in next message)\n4. Search more OR give FINAL(answer)\n\nWhen done searching, end with: FINAL(your evidence-based answer)\n\n---\n\nWhat is the maximum occupancy and what amenities are included in the conference room rental?"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.lower().find('occupancy')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: 2103"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nprint(context[2103:2450])\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nOccupancy Limits:\n- Small Meeting Room (Rm 101): 8 people max\n- Medium Conference Room (Rm 205): 20 people max\n- Large Conference Hall (Rm 310): 75 people max\n- Executive Boardroom (Rm 401): 16 people max\nFire code strictly enforced. Additional attendees require overflow room booking."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.lower().find('amenities')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: 3789"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nprint(context[3789:4200])\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nAmenities Included in All Room Rentals:\n- 75\" 4K display with HDMI and wireless casting\n- Video conferencing system (Zoom/Teams/WebEx compatible)\n- Whiteboard and dry-erase markers\n- High-speed WiFi (500 Mbps)\n- Climate control\n- Coffee/tea service (catering available for additional fee)\n- Dedicated IT support during business hours\n- Free parking for up to 10 vehicles"
+      },
+      {
+        "role": "assistant",
+        "content": "FINAL(Maximum Occupancy: Small Meeting Room 8 people, Medium Conference Room 20 people, Large Conference Hall 75 people, Executive Boardroom 16 people. Amenities Included: 75\" 4K display with HDMI/wireless casting, video conferencing system, whiteboard, 500 Mbps WiFi, climate control, coffee/tea service, IT support during business hours, and free parking for up to 10 vehicles.)"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "You are a SEARCH assistant with a Python REPL. You search documents - nothing else.\n\nOUTPUT FORMAT: Your response must START with ```python - no preamble, no explanation, just code.\n\nCONSTRAINT: Your training data is IRRELEVANT. You know NOTHING about this document.\n- Answering without searching = WRONG\n- Explaining instead of searching = WRONG\n- Any text before your code block = WRONG\n\nTOOLS:\n- `context` - the document (already loaded, DO NOT redefine)\n- `llm_query(question, context[start:end])` - ask sub-LLM about a chunk\n\nWORKFLOW:\n1. Write ```python with print() to search\n2. STOP immediately after code block\n3. Wait for output (appears in next message)\n4. Search more OR give FINAL(answer)\n\nWhen done searching, end with: FINAL(your evidence-based answer)\n\n---\n\nWhat are the side effects of the medication and what is the recommended dosage?"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.lower().find('side effect')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: 3421"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nprint(context[3421:3850])\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nSide Effects:\nCommon (>10% of patients): Headache, nausea, dizziness, fatigue\nLess Common (1-10%): Dry mouth, constipation, blurred vision, insomnia\nRare (<1%): Allergic reactions, rapid heartbeat, confusion\n\nSeek immediate medical attention if you experience chest pain, difficulty breathing, or severe skin rash. Report all side effects to your healthcare provider."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.lower().find('dosage')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: 1205"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nprint(context[1205:1600])\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nDosage and Administration:\nAdults (18+): Start with 25mg once daily. May increase to 50mg after one week if tolerated. Maximum dose: 100mg/day.\nElderly (65+): Start with 12.5mg once daily. Maximum dose: 50mg/day.\nTake with food to reduce stomach upset. Swallow whole - do not crush or chew. Take at the same time each day for best results."
+      },
+      {
+        "role": "assistant",
+        "content": "FINAL(Side Effects - Common: headache, nausea, dizziness, fatigue; Less common: dry mouth, constipation, blurred vision, insomnia; Rare: allergic reactions, rapid heartbeat, confusion. Seek immediate care for chest pain, breathing difficulty, or severe rash. Dosage - Adults: start 25mg daily, may increase to 50mg after one week, max 100mg/day; Elderly: start 12.5mg daily, max 50mg/day. Take with food, swallow whole, same time daily.)"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "You are a SEARCH assistant with a Python REPL. You search documents - nothing else.\n\nOUTPUT FORMAT: Your response must START with ```python - no preamble, no explanation, just code.\n\nCONSTRAINT: Your training data is IRRELEVANT. You know NOTHING about this document.\n- Answering without searching = WRONG\n- Explaining instead of searching = WRONG\n- Any text before your code block = WRONG\n\nTOOLS:\n- `context` - the document (already loaded, DO NOT redefine)\n- `llm_query(question, context[start:end])` - ask sub-LLM about a chunk\n\nWORKFLOW:\n1. Write ```python with print() to search\n2. STOP immediately after code block\n3. Wait for output (appears in next message)\n4. Search more OR give FINAL(answer)\n\nWhen done searching, end with: FINAL(your evidence-based answer)\n\n---\n\nWhat is the check-in time and what is the cancellation policy?"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.lower().find('check-in')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: 892"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nprint(context[892:1250])\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nCheck-in and Check-out Times:\nStandard check-in: 3:00 PM\nExpress check-in available via mobile app starting 6:00 AM\nCheck-out: 11:00 AM\nLate check-out available upon request (subject to availability, $50 fee for checkout until 2 PM)\nEarly check-in may be available for an additional $30 fee"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.lower().find('cancellation')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: 4123"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nprint(context[4123:4500])\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nCancellation Policy:\n- Free cancellation up to 48 hours before check-in\n- Cancellation within 48 hours: First night charged\n- No-show: Full stay charged\n- Non-refundable rates: No cancellation allowed, full prepayment required\n- Group bookings (5+ rooms): 14-day cancellation notice required\n\nRefunds processed within 5-7 business days to original payment method."
+      },
+      {
+        "role": "assistant",
+        "content": "FINAL(Check-in Time: Standard check-in at 3:00 PM, express check-in via mobile app from 6:00 AM, early check-in available for $30 fee. Check-out at 11:00 AM with late check-out until 2 PM for $50. Cancellation Policy: Free cancellation up to 48 hours before check-in; within 48 hours first night charged; no-show full stay charged; non-refundable rates have no cancellation option; group bookings require 14-day notice. Refunds in 5-7 business days.)"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "You are a SEARCH assistant with a Python REPL. You search documents - nothing else.\n\nOUTPUT FORMAT: Your response must START with ```python - no preamble, no explanation, just code.\n\nCONSTRAINT: Your training data is IRRELEVANT. You know NOTHING about this document.\n- Answering without searching = WRONG\n- Explaining instead of searching = WRONG\n- Any text before your code block = WRONG\n\nTOOLS:\n- `context` - the document (already loaded, DO NOT redefine)\n- `llm_query(question, context[start:end])` - ask sub-LLM about a chunk\n\nWORKFLOW:\n1. Write ```python with print() to search\n2. STOP immediately after code block\n3. Wait for output (appears in next message)\n4. Search more OR give FINAL(answer)\n\nWhen done searching, end with: FINAL(your evidence-based answer)\n\n---\n\nWhat is the application process and what documents are required?"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.lower().find('application process')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: 1823"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nprint(context[1823:2250])\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nApplication Process:\n1. Create an online account at grants.gov\n2. Complete the eligibility questionnaire\n3. Fill out Form SF-424 (Application for Federal Assistance)\n4. Submit project narrative (max 10 pages)\n5. Attach required documents (see checklist)\n6. Submit by deadline - no late submissions accepted\n7. Await review notification (6-8 weeks)"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.lower().find('required documents')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: 4567"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nprint(context[4567:4950])\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nRequired Documents Checklist:\n- Proof of 501(c)(3) status or government entity letter\n- Current fiscal year budget\n- Most recent audited financial statements\n- Board of Directors list with affiliations\n- Letters of support from partner organizations (minimum 2)\n- Organizational chart\n- Key personnel resumes (project lead and financial officer)"
+      },
+      {
+        "role": "assistant",
+        "content": "FINAL(Application Process: 1) Create account at grants.gov, 2) Complete eligibility questionnaire, 3) Fill out Form SF-424, 4) Submit project narrative (max 10 pages), 5) Attach required documents, 6) Submit by deadline, 7) Await review (6-8 weeks). Required Documents: 501(c)(3) proof or government entity letter, current fiscal year budget, audited financial statements, Board of Directors list, minimum 2 letters of support, organizational chart, and key personnel resumes.)"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "You are a SEARCH assistant with a Python REPL. You search documents - nothing else.\n\nOUTPUT FORMAT: Your response must START with ```python - no preamble, no explanation, just code.\n\nCONSTRAINT: Your training data is IRRELEVANT. You know NOTHING about this document.\n- Answering without searching = WRONG\n- Explaining instead of searching = WRONG\n- Any text before your code block = WRONG\n\nTOOLS:\n- `context` - the document (already loaded, DO NOT redefine)\n- `llm_query(question, context[start:end])` - ask sub-LLM about a chunk\n\nWORKFLOW:\n1. Write ```python with print() to search\n2. STOP immediately after code block\n3. Wait for output (appears in next message)\n4. Search more OR give FINAL(answer)\n\nWhen done searching, end with: FINAL(your evidence-based answer)\n\n---\n\nWhat are the eligibility criteria and what benefits does the membership include?"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.lower().find('eligib')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: 2045"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nprint(context[2045:2450])\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nEligibility Requirements:\n- Must be 18 years or older\n- Valid government-issued ID required\n- Must reside within the service area (50-mile radius)\n- No outstanding debts with the organization\n- Complete new member orientation (offered monthly)\n- Annual household income below $75,000 for subsidized rates\n- Background check required for volunteer positions"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.lower().find('benefit')\nprint(f\"Found at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nFound at: 5678"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nprint(context[5678:6100])\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nBenefits of Membership:\n- Unlimited access to all fitness facilities\n- Free group fitness classes (yoga, spinning, HIIT)\n- 20% discount on personal training sessions\n- Free childcare during workouts (ages 6 months - 12 years)\n- Access to members-only events and workshops\n- Reciprocal access to 200+ partner locations nationwide\n- Monthly wellness newsletter and health resources\n- Guest passes (4 per year)"
+      },
+      {
+        "role": "assistant",
+        "content": "FINAL(Eligibility Criteria: Must be 18+, have valid government ID, reside within 50-mile radius, no outstanding debts, complete new member orientation, household income below $75,000 for subsidized rates, background check for volunteer positions. Membership Benefits: Unlimited facility access, free group fitness classes, 20% off personal training, free childcare ages 6 months-12 years, members-only events, reciprocal access to 200+ partner locations, monthly wellness newsletter, and 4 guest passes per year.)"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "You are a SEARCH assistant with a Python REPL. You search documents - nothing else.\n\nOUTPUT FORMAT: Your response must START with ```python - no preamble, no explanation, just code.\n\nCONSTRAINT: Your training data is IRRELEVANT. You know NOTHING about this document.\n- Answering without searching = WRONG\n- Explaining instead of searching = WRONG\n- Any text before your code block = WRONG\n\nTOOLS:\n- `context` - the document (already loaded, DO NOT redefine)\n- `llm_query(question, context[start:end])` - ask sub-LLM about a chunk\n\nWORKFLOW:\n1. Write ```python with print() to search\n2. STOP immediately after code block\n3. Wait for output (appears in next message)\n4. Search more OR give FINAL(answer)\n\nWhen done searching, end with: FINAL(your evidence-based answer)\n\n---\n\nWhat is the main argument the author makes about climate policy in the conclusion?"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.lower().find('conclusion')\nprint(f\"Conclusion at: {idx}\")\nprint(f\"Document length: {len(context)}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nConclusion at: 45230\nDocument length: 52000"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nresult = llm_query(\"What is the main argument about climate policy?\", context[45230:52000])\nprint(result)\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nThe author argues that incremental climate policies are insufficient and advocates for a carbon tax combined with direct investment in renewable infrastructure. The key claim is that market-based solutions alone cannot achieve the necessary emissions reductions within the required timeframe."
+      },
+      {
+        "role": "assistant",
+        "content": "FINAL(The author's main argument in the conclusion is that incremental climate policies are insufficient. They advocate for combining a carbon tax with direct investment in renewable infrastructure, arguing that market-based solutions alone cannot achieve necessary emissions reductions within the required timeframe.)"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "You are a SEARCH assistant with a Python REPL. You search documents - nothing else.\n\nOUTPUT FORMAT: Your response must START with ```python - no preamble, no explanation, just code.\n\nCONSTRAINT: Your training data is IRRELEVANT. You know NOTHING about this document.\n- Answering without searching = WRONG\n- Explaining instead of searching = WRONG\n- Any text before your code block = WRONG\n\nTOOLS:\n- `context` - the document (already loaded, DO NOT redefine)\n- `llm_query(question, context[start:end])` - ask sub-LLM about a chunk\n\nWORKFLOW:\n1. Write ```python with print() to search\n2. STOP immediately after code block\n3. Wait for output (appears in next message)\n4. Search more OR give FINAL(answer)\n\nWhen done searching, end with: FINAL(your evidence-based answer)\n\n---\n\nSummarize the methodology section of this research paper."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.lower().find('methodology')\nif idx == -1:\n    idx = context.lower().find('methods')\nprint(f\"Methods section at: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nMethods section at: 8450"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nresult = llm_query(\"Summarize this methodology section - what approach did they use and how?\", context[8450:15200])\nprint(result)\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nThe study used a mixed-methods approach with 3 phases: (1) quantitative survey of 2,400 participants across 6 countries, (2) qualitative interviews with 45 selected respondents, and (3) content analysis of policy documents. Data was collected between March-August 2023. Statistical analysis used regression models controlling for demographic variables."
+      },
+      {
+        "role": "assistant",
+        "content": "FINAL(The methodology uses a mixed-methods approach in 3 phases: (1) quantitative survey of 2,400 participants across 6 countries, (2) qualitative interviews with 45 selected respondents, and (3) content analysis of policy documents. Data collection occurred March-August 2023, with regression models used for statistical analysis controlling for demographic variables.)"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "You are a SEARCH assistant with a Python REPL. You search documents - nothing else.\n\nOUTPUT FORMAT: Your response must START with ```python - no preamble, no explanation, just code.\n\nCONSTRAINT: Your training data is IRRELEVANT. You know NOTHING about this document.\n- Answering without searching = WRONG\n- Explaining instead of searching = WRONG\n- Any text before your code block = WRONG\n\nTOOLS:\n- `context` - the document (already loaded, DO NOT redefine)\n- `llm_query(question, context[start:end])` - ask sub-LLM about a chunk\n\nWORKFLOW:\n1. Write ```python with print() to search\n2. STOP immediately after code block\n3. Wait for output (appears in next message)\n4. Search more OR give FINAL(answer)\n\nWhen done searching, end with: FINAL(your evidence-based answer)\n\n---\n\nWhat are the pros and cons of the proposed solution discussed in this document?"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nfor term in ['proposed solution', 'advantages', 'disadvantages', 'benefits', 'drawbacks', 'pros', 'cons']:\n    idx = context.lower().find(term)\n    if idx != -1:\n        print(f\"{term}: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nproposed solution: 12340\nadvantages: 14500\ndisadvantages: 16200\nbenefits: 14520\ndrawbacks: 16180"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nresult = llm_query(\"List the advantages/pros and disadvantages/cons of the proposed solution\", context[14500:18000])\nprint(result)\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nPros: (1) Reduces operational costs by 40%, (2) Improves scalability for growing user base, (3) Integrates with existing infrastructure, (4) Has proven track record in similar deployments. Cons: (1) High upfront implementation cost of $2.3M, (2) Requires 6-month transition period, (3) Staff retraining needed, (4) Vendor lock-in risk with the chosen platform."
+      },
+      {
+        "role": "assistant",
+        "content": "FINAL(Pros: (1) Reduces operational costs by 40%, (2) Improves scalability, (3) Integrates with existing infrastructure, (4) Proven track record. Cons: (1) High upfront cost of $2.3M, (2) 6-month transition period required, (3) Staff retraining needed, (4) Vendor lock-in risk.)"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "You are a SEARCH assistant with a Python REPL. You search documents - nothing else.\n\nOUTPUT FORMAT: Your response must START with ```python - no preamble, no explanation, just code.\n\nCONSTRAINT: Your training data is IRRELEVANT. You know NOTHING about this document.\n- Answering without searching = WRONG\n- Explaining instead of searching = WRONG\n- Any text before your code block = WRONG\n\nTOOLS:\n- `context` - the document (already loaded, DO NOT redefine)\n- `llm_query(question, context[start:end])` - ask sub-LLM about a chunk\n\nWORKFLOW:\n1. Write ```python with print() to search\n2. STOP immediately after code block\n3. Wait for output (appears in next message)\n4. Search more OR give FINAL(answer)\n\nWhen done searching, end with: FINAL(your evidence-based answer)\n\n---\n\nHow does the author critique previous approaches to neural network optimization?"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.lower().find('related work')\nif idx == -1:\n    idx = context.lower().find('previous work')\nif idx == -1:\n    idx = context.lower().find('background')\nprint(f\"Related work section: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nRelated work section: 3200"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nresult = llm_query(\"How does the author critique or identify limitations in previous neural network optimization approaches?\", context[3200:7500])\nprint(result)\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nThe author critiques previous approaches on three fronts: (1) SGD variants like Adam and RMSprop struggle with saddle points in high-dimensional loss landscapes, (2) learning rate scheduling methods require extensive hyperparameter tuning that doesn't transfer across architectures, and (3) second-order methods like K-FAC have prohibitive memory requirements for large models. The author characterizes these as 'band-aid solutions' that address symptoms rather than fundamental issues."
+      },
+      {
+        "role": "assistant",
+        "content": "FINAL(The author critiques previous optimization approaches on three fronts: (1) SGD variants like Adam and RMSprop struggle with saddle points in high-dimensional loss landscapes, (2) learning rate scheduling requires extensive hyperparameter tuning that doesn't transfer across architectures, (3) second-order methods like K-FAC have prohibitive memory requirements. The author characterizes these as 'band-aid solutions' addressing symptoms rather than fundamental issues.)"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "You are a SEARCH assistant with a Python REPL. You search documents - nothing else.\n\nOUTPUT FORMAT: Your response must START with ```python - no preamble, no explanation, just code.\n\nCONSTRAINT: Your training data is IRRELEVANT. You know NOTHING about this document.\n- Answering without searching = WRONG\n- Explaining instead of searching = WRONG\n- Any text before your code block = WRONG\n\nTOOLS:\n- `context` - the document (already loaded, DO NOT redefine)\n- `llm_query(question, context[start:end])` - ask sub-LLM about a chunk\n\nWORKFLOW:\n1. Write ```python with print() to search\n2. STOP immediately after code block\n3. Wait for output (appears in next message)\n4. Search more OR give FINAL(answer)\n\nWhen done searching, end with: FINAL(your evidence-based answer)\n\n---\n\nWhat recommendations does the report make for improving employee retention?"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nfor term in ['recommendation', 'retention', 'suggest', 'propose']:\n    idx = context.lower().find(term)\n    print(f\"{term}: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nrecommendation: 28900\nretention: 5400\nsuggest: 29150\npropose: 29300"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nresult = llm_query(\"What specific recommendations are made for improving employee retention?\", context[28900:33000])\nprint(result)\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nThe report recommends five key actions: (1) Implement flexible work arrangements including hybrid options, (2) Create clear career progression pathways with transparent promotion criteria, (3) Increase compensation to match 75th percentile of industry benchmarks, (4) Establish mentorship programs pairing junior staff with senior leaders, (5) Conduct quarterly stay interviews rather than relying solely on exit interviews. The report emphasizes that #2 and #4 showed the strongest correlation with retention in the survey data."
+      },
+      {
+        "role": "assistant",
+        "content": "FINAL(The report recommends five actions for employee retention: (1) Implement flexible/hybrid work arrangements, (2) Create clear career progression with transparent promotion criteria, (3) Increase compensation to 75th percentile of industry benchmarks, (4) Establish mentorship programs pairing junior staff with senior leaders, (5) Conduct quarterly stay interviews instead of only exit interviews. The report notes that career pathways (#2) and mentorship (#4) showed the strongest correlation with retention.)"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "You are a SEARCH assistant with a Python REPL. You search documents - nothing else.\n\nOUTPUT FORMAT: Your response must START with ```python - no preamble, no explanation, just code.\n\nCONSTRAINT: Your training data is IRRELEVANT. You know NOTHING about this document.\n- Answering without searching = WRONG\n- Explaining instead of searching = WRONG\n- Any text before your code block = WRONG\n\nTOOLS:\n- `context` - the document (already loaded, DO NOT redefine)\n- `llm_query(question, context[start:end])` - ask sub-LLM about a chunk\n\nWORKFLOW:\n1. Write ```python with print() to search\n2. STOP immediately after code block\n3. Wait for output (appears in next message)\n4. Search more OR give FINAL(answer)\n\nWhen done searching, end with: FINAL(your evidence-based answer)\n\n---\n\nExplain the legal implications discussed in Section 4 of this contract."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nimport re\nmatches = list(re.finditer(r'section\\s*4|article\\s*4|4\\.\\s', context.lower()))\nfor m in matches[:5]:\n    print(f\"Position {m.start()}: {context[m.start():m.start()+50]}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nPosition 15600: section 4: liability and indemnification\\n\\n4.1\nPosition 15750: 4.1 limitation of liability. neither party\nPosition 16200: 4.2 indemnification. each party agrees to"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nresult = llm_query(\"What are the key legal implications and obligations in this liability/indemnification section?\", context[15600:19000])\nprint(result)\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nSection 4 establishes critical legal protections: (1) Neither party is liable for consequential, incidental, or punitive damages regardless of cause, (2) Total liability is capped at fees paid in the 12 months preceding the claim, (3) Each party must indemnify the other against third-party claims arising from their own negligence or willful misconduct, (4) Indemnification requires prompt written notice within 30 days of learning of a claim, (5) The indemnified party must allow the indemnifying party to control defense but can participate at own expense."
+      },
+      {
+        "role": "assistant",
+        "content": "FINAL(Section 4 establishes these legal implications: (1) Neither party is liable for consequential, incidental, or punitive damages, (2) Total liability capped at fees paid in prior 12 months, (3) Mutual indemnification against third-party claims from negligence or willful misconduct, (4) Indemnification requires written notice within 30 days, (5) Indemnifying party controls defense while indemnified party may participate at own expense.)"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "You are a SEARCH assistant with a Python REPL. You search documents - nothing else.\n\nOUTPUT FORMAT: Your response must START with ```python - no preamble, no explanation, just code.\n\nCONSTRAINT: Your training data is IRRELEVANT. You know NOTHING about this document.\n- Answering without searching = WRONG\n- Explaining instead of searching = WRONG\n- Any text before your code block = WRONG\n\nTOOLS:\n- `context` - the document (already loaded, DO NOT redefine)\n- `llm_query(question, context[start:end])` - ask sub-LLM about a chunk\n\nWORKFLOW:\n1. Write ```python with print() to search\n2. STOP immediately after code block\n3. Wait for output (appears in next message)\n4. Search more OR give FINAL(answer)\n\nWhen done searching, end with: FINAL(your evidence-based answer)\n\n---\n\nWhat ethical concerns does the paper raise about facial recognition technology?"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nfor term in ['ethical', 'concern', 'privacy', 'bias', 'facial recognition']:\n    idx = context.lower().find(term)\n    print(f\"{term}: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nethical: 22100\nconcern: 22150\nprivacy: 8900\nbias: 18500\nfacial recognition: 1200"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nresult = llm_query(\"What ethical concerns and issues are raised about facial recognition technology?\", context[22100:27000])\nprint(result)\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nThe paper raises four major ethical concerns: (1) Racial and gender bias - accuracy rates vary significantly across demographics, with error rates 10-100x higher for darker-skinned women compared to lighter-skinned men, (2) Mass surveillance potential - enabling authoritarian tracking of populations without consent, (3) Lack of transparency - most commercial systems are black boxes with no external auditing, (4) Consent and autonomy - faces can be captured and processed without individual knowledge or agreement. The authors argue these concerns are not merely technical bugs but reflect systemic issues in how the technology is developed and deployed."
+      },
+      {
+        "role": "assistant",
+        "content": "FINAL(The paper raises four ethical concerns about facial recognition: (1) Racial/gender bias with error rates 10-100x higher for darker-skinned women vs lighter-skinned men, (2) Mass surveillance enabling authoritarian population tracking without consent, (3) Lack of transparency as most commercial systems have no external auditing, (4) Consent/autonomy issues since faces can be captured without knowledge or agreement. The authors argue these are systemic issues in development and deployment, not just technical bugs.)"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "You are a SEARCH assistant with a Python REPL. You search documents - nothing else.\n\nOUTPUT FORMAT: Your response must START with ```python - no preamble, no explanation, just code.\n\nCONSTRAINT: Your training data is IRRELEVANT. You know NOTHING about this document.\n- Answering without searching = WRONG\n- Explaining instead of searching = WRONG\n- Any text before your code block = WRONG\n\nTOOLS:\n- `context` - the document (already loaded, DO NOT redefine)\n- `llm_query(question, context[start:end])` - ask sub-LLM about a chunk\n\nWORKFLOW:\n1. Write ```python with print() to search\n2. STOP immediately after code block\n3. Wait for output (appears in next message)\n4. Search more OR give FINAL(answer)\n\nWhen done searching, end with: FINAL(your evidence-based answer)\n\n---\n\nCompare the treatment outcomes between the control group and treatment group as described in this clinical trial report."
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.lower().find('results')\nprint(f\"Results section: {idx}\")\nprint(f\"Preview: {context[idx:idx+100]}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nResults section: 18400\nPreview: Results\\n\\nPrimary Outcomes\\n\\nA total of 842 participants completed the 12-week trial period. Table"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nresult = llm_query(\"Compare the treatment outcomes between the control group and treatment group - what were the differences in results?\", context[18400:25000])\nprint(result)\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nThe treatment group (n=421) showed significantly better outcomes than control (n=421): Primary endpoint - 68% of treatment group achieved symptom remission vs 34% in control (p<0.001). Secondary endpoints: Treatment group had 45% reduction in inflammatory markers vs 12% in control; quality of life scores improved by 28 points vs 8 points; adverse events were comparable between groups (23% vs 21%). The number needed to treat (NNT) was 3, indicating strong clinical significance."
+      },
+      {
+        "role": "assistant",
+        "content": "FINAL(Treatment group showed significantly better outcomes than control (both n=421): Primary endpoint - 68% symptom remission in treatment vs 34% in control (p<0.001). Secondary endpoints: 45% vs 12% reduction in inflammatory markers; quality of life improved 28 vs 8 points. Adverse events were comparable (23% vs 21%). Number needed to treat was 3, indicating strong clinical significance.)"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "You are a SEARCH assistant with a Python REPL. You search documents - nothing else.\n\nOUTPUT FORMAT: Your response must START with ```python - no preamble, no explanation, just code.\n\nCONSTRAINT: Your training data is IRRELEVANT. You know NOTHING about this document.\n- Answering without searching = WRONG\n- Explaining instead of searching = WRONG\n- Any text before your code block = WRONG\n\nTOOLS:\n- `context` - the document (already loaded, DO NOT redefine)\n- `llm_query(question, context[start:end])` - ask sub-LLM about a chunk\n\nWORKFLOW:\n1. Write ```python with print() to search\n2. STOP immediately after code block\n3. Wait for output (appears in next message)\n4. Search more OR give FINAL(answer)\n\nWhen done searching, end with: FINAL(your evidence-based answer)\n\n---\n\nWhat are the key risk factors identified in the financial audit report?"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nfor term in ['risk', 'audit findings', 'material weakness', 'deficiency']:\n    idx = context.lower().find(term)\n    print(f\"{term}: {idx}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nrisk: 8200\naudit findings: 31000\nmaterial weakness: 32500\ndeficiency: 33100"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nresult = llm_query(\"What are the key risk factors and audit findings identified?\", context[31000:38000])\nprint(result)\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nThe audit identified three material weaknesses and two significant deficiencies: Material weaknesses: (1) Inadequate segregation of duties in accounts payable allowing single employees to authorize and process payments, (2) Revenue recognition timing errors affecting Q3 and Q4 by approximately $4.2M, (3) Insufficient IT general controls over financial system access. Significant deficiencies: (1) Incomplete documentation of related-party transactions, (2) Inconsistent application of lease accounting standards. The auditors note these risks could lead to material misstatement if not remediated."
+      },
+      {
+        "role": "assistant",
+        "content": "FINAL(The audit identified three material weaknesses: (1) Inadequate segregation of duties in accounts payable allowing single employees to authorize and process payments, (2) Revenue recognition timing errors affecting Q3/Q4 by ~$4.2M, (3) Insufficient IT general controls over financial system access. Two significant deficiencies: (1) Incomplete documentation of related-party transactions, (2) Inconsistent lease accounting standards application. These could lead to material misstatement if not remediated.)"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "You are a SEARCH assistant with a Python REPL. You search documents - nothing else.\n\nOUTPUT FORMAT: Your response must START with ```python - no preamble, no explanation, just code.\n\nCONSTRAINT: Your training data is IRRELEVANT. You know NOTHING about this document.\n- Answering without searching = WRONG\n- Explaining instead of searching = WRONG\n- Any text before your code block = WRONG\n\nTOOLS:\n- `context` - the document (already loaded, DO NOT redefine)\n- `llm_query(question, context[start:end])` - ask sub-LLM about a chunk\n\nWORKFLOW:\n1. Write ```python with print() to search\n2. STOP immediately after code block\n3. Wait for output (appears in next message)\n4. Search more OR give FINAL(answer)\n\nWhen done searching, end with: FINAL(your evidence-based answer)\n\n---\n\nWhat future research directions does the paper suggest in the discussion section?"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nidx = context.lower().find('discussion')\nprint(f\"Discussion section: {idx}\")\nidx2 = context.lower().find('future', idx if idx != -1 else 0)\nprint(f\"Future mentioned at: {idx2}\")\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nDiscussion section: 38500\nFuture mentioned at: 42300"
+      },
+      {
+        "role": "assistant",
+        "content": "```python\nresult = llm_query(\"What future research directions and next steps does the paper suggest?\", context[42300:47000])\nprint(result)\n```"
+      },
+      {
+        "role": "user",
+        "content": "Output:\nThe authors propose several research directions: (1) Longitudinal studies tracking participants over 5+ years to assess long-term effects, (2) Replication in more diverse populations since current sample was predominantly from Western countries, (3) Investigation of the underlying neural mechanisms using fMRI imaging, (4) Development of personalized intervention protocols based on individual biomarkers, (5) Integration with digital health platforms for real-time monitoring. They specifically call for multi-site randomized trials with larger sample sizes to increase statistical power and generalizability."
+      },
+      {
+        "role": "assistant",
+        "content": "FINAL(The paper suggests these future research directions: (1) Longitudinal studies tracking participants 5+ years for long-term effects, (2) Replication in more diverse populations beyond Western countries, (3) Investigation of neural mechanisms using fMRI, (4) Development of personalized interventions based on individual biomarkers, (5) Integration with digital health platforms for real-time monitoring. They call specifically for multi-site randomized trials with larger samples to increase statistical power and generalizability.)"
+      }
+    ]
+  }
+]
